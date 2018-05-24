@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class ControllerMap {
 	
-	//ports for different controller inputs, base reference is XBOX
+	//ports for different controller inputs, base reference is XBOX, if button/axis doesn't exist, leave as null
 	private final int[] xbox = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
 	private final int[] ps = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
 	private final int[] logitech = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
@@ -36,18 +36,26 @@ public class ControllerMap {
 	}
 	//right trigger
 	public double getRT(Joystick stick){
-		if(controllerType == 2){
-			return stick.getRawButton(controlPort[controllerType][11]) ? 0 : 1;
-		}else{
-			return stick.getRawAxis(controlPort[controllerType][17]);
+		try{
+			if(controllerType == 2){
+				return stick.getRawButton(controlPort[controllerType][11]) ? 0 : 1;
+			}else{
+				return stick.getRawAxis(controlPort[controllerType][17]);
+			}
+		}catch(NullPointerException VariableDeclaratorId){
+			return 0;
 		}
 	}
 	//left trigger
 	public double getLT(Joystick stick){
-		if(controllerType == 2){
-			return stick.getRawButton(controlPort[controllerType][12]) ? 0 : 1;
-		}else{
-			return stick.getRawAxis(controlPort[controllerType][18]);
+		try{
+			if(controllerType == 2){
+				return stick.getRawButton(controlPort[controllerType][12]) ? 0 : 1;
+			}else{
+				return stick.getRawAxis(controlPort[controllerType][18]);
+			}
+		}catch(NullPointerException VariableDeclaratorId){
+			return 0;
 		}
 	}
 	//A button
