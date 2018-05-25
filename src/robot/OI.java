@@ -64,8 +64,51 @@ public class OI {
 		return driver.getRawAxis(0);
 	}
 	
+	public double getDRY(){
+		return driver.getRawAxis(1);
+	}
+	
+	public double getDLX(){
+		return driver.getRawAxis(2);
+	}
+	
+	public double getDLY(){
+		return driver.getRawAxis(3);
+	}
+	
+	public double getDRT(){
+		return driver.getRawAxis(4);
+	}
+	
+	public double getDLT(){
+		return driver.getRawAxis(5);
+	}
+	
+	public double getORX(){
+		return op.getRawAxis(0);
+	}
+	
+	public double getORY(){
+		return op.getRawAxis(1);
+	}
+	
+	public double getOLX(){
+		return op.getRawAxis(2);
+	}
+	
+	public double getOLY(){
+		return op.getRawAxis(3);
+	}
+	
+	public double getORT(){
+		return op.getRawAxis(4);
+	}
+	
+	public double getOLT(){
+		return op.getRawAxis(5);
+	}
+	
 	public void smartDashUpdate(){
 		
 	}
-	
 }
