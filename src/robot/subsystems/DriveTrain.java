@@ -18,7 +18,7 @@ public class DriveTrain extends Subsystem {
 	
 	//main method for setting motor speeds
 	public void setSpeed(ControlMode mode, double right, double left){
-		if(autoTrans){
+		if(autoTrans && mode == ControlMode.PercentOutput){
 			//automagically adjusts input values to actually motor values when shifting and does transmission
 			if(right > shiftAt || right < -shiftAt || left > shiftAt || left < -shiftAt){
 				trans.set(true);

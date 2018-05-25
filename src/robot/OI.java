@@ -68,7 +68,7 @@ public class OI {
 		return driver.getRawAxis(1);
 	}
 	
-	public double getDLX(){
+	public static double getDLX(){
 		return driver.getRawAxis(2);
 	}
 	
@@ -76,11 +76,11 @@ public class OI {
 		return driver.getRawAxis(3);
 	}
 	
-	public double getDRT(){
+	public static double getDRT(){
 		return driver.getRawAxis(4);
 	}
 	
-	public double getDLT(){
+	public static double getDLT(){
 		return driver.getRawAxis(5);
 	}
 	
