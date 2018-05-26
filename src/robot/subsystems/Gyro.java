@@ -25,6 +25,8 @@ public class Gyro extends Subsystem {
 		return gyro.getAngle();
 	}
 	
+	//TODO: figure out what exactly reset means in this case
+	
 	public void reset() {
 		gyro.reset();
 	}

@@ -17,4 +17,7 @@ public class RobotMap {
 	public static int DRIVETRAINRIGHT = 1;
 	public static int DRIVETRAINLEFT = 2;
 	public static int DRIVETRANS = 3;
+	
+	
+	public static int ARM = 0; //TODO: put the real value in here
 }
