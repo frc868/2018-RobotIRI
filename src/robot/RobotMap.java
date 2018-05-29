@@ -14,9 +14,11 @@ package robot;
  * floating around.
  */
 public class RobotMap {
-	public static int DRIVETRAINRIGHT = 1;
-	public static int DRIVETRAINLEFT = 2;
-	public static int DRIVETRANS = 3;
+	public static final int DRIVETRAINRIGHT2 = 0;
+	public static final int DRIVETRAINRIGHT = 1;
+	public static final int DRIVETRAINLEFT = 2;
+	public static final int DRIVETRAINLEFT2 = 4;
+	public static final int DRIVETRANS = 3;
 	
 	
 	public static int ARM = 0; //TODO: put the real value in here

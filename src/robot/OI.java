@@ -60,11 +60,11 @@ public class OI {
 		
 	}
 	
-	public double getDRX(){
+	public static double getDRX(){
 		return driver.getRawAxis(0);
 	}
 	
-	public double getDRY(){
+	public static double getDRY(){
 		return driver.getRawAxis(1);
 	}
 	
@@ -72,7 +72,7 @@ public class OI {
 		return driver.getRawAxis(2);
 	}
 	
-	public double getDLY(){
+	public static double getDLY(){
 		return driver.getRawAxis(3);
 	}
 	
@@ -84,27 +84,27 @@ public class OI {
 		return driver.getRawAxis(5);
 	}
 	
-	public double getORX(){
+	public static double getORX(){
 		return op.getRawAxis(0);
 	}
 	
-	public double getORY(){
+	public static double getORY(){
 		return op.getRawAxis(1);
 	}
 	
-	public double getOLX(){
+	public static double getOLX(){
 		return op.getRawAxis(2);
 	}
 	
-	public double getOLY(){
+	public static double getOLY(){
 		return op.getRawAxis(3);
 	}
 	
-	public double getORT(){
+	public static double getORT(){
 		return op.getRawAxis(4);
 	}
 	
-	public double getOLT(){
+	public static double getOLT(){
 		return op.getRawAxis(5);
 	}
 	
