@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
 	
-	private static final XboxController driver = new XboxController(0);
-	private static final XboxController op = new XboxController(1);
+	public static final XboxController driver = new XboxController(0);
+	public static final XboxController op = new XboxController(1);
 	
 	private final double DEADZONE = 0.1;
 	

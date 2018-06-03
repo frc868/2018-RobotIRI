@@ -14,20 +14,12 @@ package robot;
  * floating around.
  */
 public class RobotMap {
-	public static final int DRIVETRAINRIGHT2 = 0;
-	public static final int DRIVETRAINRIGHT = 1;
-	public static final int DRIVETRAINLEFT = 2;
-	public static final int DRIVETRAINLEFT2 = 4;
-	public static final int DRIVETRANS = 3;
+	
 	
 	
 	public static int ARM = 0; //TODO: put the real value in here
 	
 	// Motors (CAN)
-	public static final int DRIVE_LEFT_PRIMARY = 25;
-	public static final int DRIVE_LEFT_SECONDARY = 24;
-	public static final int DRIVE_RIGHT_PRIMARY = 10;
-	public static final int DRIVE_RIGHT_SECONDARY = 11;
 	public static final int INTAKE_LEFT = 14;
 	public static final int INTAKE_RIGHT = 15;
 	public static final int POWER_PACK_PRIMARY = 23;
@@ -37,7 +29,6 @@ public class RobotMap {
 	public static final int TILT = 13;
 	
 	// Pneumatics (PCM)
-	public static final int DRIVE_TRANSMISSION = 7;
 	public static final int ARMS = 6;
 	public static final int WINCH_TRANSMISSION = 5;
 	public static final int WINCH_BRAKE = 4;
@@ -51,5 +42,11 @@ public class RobotMap {
 	// Sensors (Digital)	
 	
 	// Drivetrain
+	public static final int DRIVETRAINRIGHT2 = 11;
+	public static final int DRIVETRAINRIGHT = 10;
+	public static final int DRIVETRAINLEFT = 25;
+	public static final int DRIVETRAINLEFT2 = 24;
+	// transmission
+	public static final int DRIVETRANS = 7;
 }
 
