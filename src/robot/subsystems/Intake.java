@@ -39,6 +39,10 @@ public class Intake extends Subsystem{
 		setPowerRight(power);
 	}
 	
+	public void turnOff() {
+		setPower(0);
+	}
+	
 	public void setPower(double powerLeft, double powerRight) {
 		setPowerLeft(powerLeft);
 		setPowerRight(powerRight);
