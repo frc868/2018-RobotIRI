@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import robot.HoundTalon;
 import robot.RobotMap;
 import robot.Utilities;
 
@@ -22,18 +23,18 @@ public class Tilt extends Subsystem {
 	public static final double MIDDLE = 0;
 	public static final double DOWN = 0;
 	
-	private WPI_TalonSRX tiltMotor;
+	private HoundTalon tiltMotor;
 
 	// the initial method
 	public Tilt()	{
-		tiltMotor = Utilities.getTalon(RobotMap.TILT, "Tilt", "Tilt");
+		tiltMotor = new HoundTalon(RobotMap.TILT, "Tilt", "Tilt");
 		tiltMotor.setInverted(false);
 		config(tiltMotor);
 		
 	}
 	
 	// configures the talon
-	private void config(WPI_TalonSRX talon)	{
+	private void config(HoundTalon talon)	{
 		
 		
 	}

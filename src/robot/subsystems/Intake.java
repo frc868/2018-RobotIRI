@@ -7,19 +7,20 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem ;
+import robot.HoundTalon;
 import robot.RobotMap;
 import robot.Utilities;
 
 public class Intake extends Subsystem{
 	
-	private WPI_TalonSRX intakeLeft;
-	private WPI_TalonSRX intakeRight;
+	private HoundTalon intakeLeft;
+	private HoundTalon intakeRight;
 	
 	public static final boolean DEBUG = false;
 	
 	public Intake() {
-		intakeLeft = Utilities.getTalon(RobotMap.INTAKE_LEFT, "Intake", "Left (Breakout)");
-		intakeRight = Utilities.getTalon(RobotMap.INTAKE_RIGHT, "Intake", "Right");
+		intakeLeft = new HoundTalon(RobotMap.INTAKE_LEFT, "Intake", "Left (Breakout)");
+		intakeRight = new HoundTalon(RobotMap.INTAKE_RIGHT, "Intake", "Right");
 		config(intakeLeft);
 		config(intakeRight);
 		
@@ -27,9 +28,9 @@ public class Intake extends Subsystem{
 		intakeRight.setInverted(true);
 	}
 	
-	private void config(WPI_TalonSRX talon) {
-		talon.configOpenloopRamp(0.1, Utilities.CONFIG_TIMEOUT);
-		talon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed, Utilities.CONFIG_TIMEOUT);
+	private void config(HoundTalon talon) {
+		talon.configOpenloopRamp(0.1, HoundTalon.CONFIG_TIMEOUT);
+		talon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed, HoundTalon.CONFIG_TIMEOUT);
 		talon.overrideLimitSwitchesEnable(false);
 		talon.setNeutralMode(NeutralMode.Brake);
 	}
