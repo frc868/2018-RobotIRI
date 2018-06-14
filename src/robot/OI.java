@@ -10,6 +10,11 @@ package robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import robot.commands.arm.CloseArm;
+import robot.commands.arm.OpenArm;
+import robot.commands.intake.SetIntakePower;
+import robot.commands.intake.TurnIntakeOff;
+import robot.commands.powerpack.SetElevatorPower;
 
 public class OI {
 	
@@ -48,11 +53,17 @@ public class OI {
 	
 	public void init(XboxController controller) {
 		A = new JoystickButton(controller, 0);
+		A.whenPressed(new CloseArm());
 		B = new JoystickButton(controller, 1);
+		B.whenPressed(new OpenArm());
 		X = new JoystickButton(controller, 2);
+		X.whenPressed(new TurnIntakeOff());
 		Y = new JoystickButton(controller, 3);
+		Y.whenPressed(new SetIntakePower(.5));
 		RB = new JoystickButton(controller, 4);
+		RB.whenPressed(new SetElevatorPower(.5));
 		LB = new JoystickButton(controller, 5);
+		RB.whenPressed(new SetElevatorPower(0));
 		RS = new JoystickButton(controller, 6);
 		LS = new JoystickButton(controller, 7);
 		Menu = new JoystickButton(controller, 8);
