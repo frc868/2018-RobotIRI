@@ -1,40 +1,32 @@
-package robot.commands.intake;
+package robot.commands.powerpack;
 
 import edu.wpi.first.wpilibj.command.Command;
-
 import robot.Robot;
 
 /**
  *
  */
-public class PullCube extends Command {
-	
-	private final int COUNTS_NEEDED = 5;
-	private int counts = 0;
-	private final int INTAKE_POWER = 1;
+public class ToggleElevatorLimits extends Command {
 
-    public PullCube() {
-       requires(Robot.intake);
+    public ToggleElevatorLimits() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.powerpack);
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	Robot.powerpack.setOverrideLimits(!Robot.powerpack.getOverrideLimits());
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.setPower(INTAKE_POWER);
-    	if (Robot.intake.isCubeDetected()) {
-    		counts++;
-    	} else {
-    		counts = 0;
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return counts >= COUNTS_NEEDED;
+        return false;
     }
 
     // Called once after isFinished returns true

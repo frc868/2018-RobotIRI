@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import robot.subsystems.Arm;
 import robot.subsystems.Intake;
+import robot.subsystems.PowerPack;
 import robot.subsystems.Hook;
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
 	public static Arm arm; 
 	public static Intake intake;
 	public static Hook hook;
+	public static PowerPack powerpack;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -40,6 +42,7 @@ public class Robot extends TimedRobot {
 		m_oi = new OI();
 		arm = new Arm(); 
 		intake = new Intake();
+		powerpack = new PowerPack();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
