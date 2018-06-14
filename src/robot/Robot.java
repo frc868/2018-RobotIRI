@@ -10,10 +10,12 @@ package robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import robot.subsystems.Arm;
 import robot.subsystems.Intake;
+import robot.subsystems.Tilt;
 import robot.subsystems.Hook;
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,6 +29,7 @@ public class Robot extends TimedRobot {
 	public static Arm arm; 
 	public static Intake intake;
 	public static Hook hook;
+	public static Tilt tilt;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();

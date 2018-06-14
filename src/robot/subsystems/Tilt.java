@@ -4,10 +4,13 @@
 package robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import robot.commands.tilt.*;
 import robot.HoundTalon;
 import robot.RobotMap;
 import robot.Utilities;
@@ -35,12 +38,14 @@ public class Tilt extends Subsystem {
 	
 	// configures the talon
 	private void config(HoundTalon talon)	{
-		
+
+		talon.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, Utilities.CONFIG_TIMEOUT);
+		talon.setNeutralMode(NeutralMode.Brake);
 		
 	}
 	
 	// sets motor to a percent power
-	public void setPower(double power)	{
+	public void setTiltPower(double power)	{
 		tiltMotor.set(ControlMode.PercentOutput, Utilities.constrain(power));
 	}
 	
@@ -49,12 +54,21 @@ public class Tilt extends Subsystem {
 		return tiltMotor.getSelectedSensorPosition(0);
 	}
 	
+	//sets the position
+	public void setTiltPosition(double setpoint) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	// the default command
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		
+
+		setDefaultCommand(new SetTiltPosition(Tilt.DOWN));
 		
 	}
+
+
 
 }
