@@ -9,7 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class Utilities {
 	
 	public static final int CONFIG_TIMEOUT = 10;
-	
+
 	public static double constrain(double value) {
 		if (value > 0) {
 			value = Math.min(value, 1);
@@ -19,6 +19,7 @@ public class Utilities {
 		return value;
 	}
 	
+	@Deprecated
 	public static WPI_TalonSRX getTalon(int port, String subsystem, String name) {
 		WPI_TalonSRX talon = new WPI_TalonSRX(port);
 		talon.setName(subsystem, name);
@@ -26,6 +27,7 @@ public class Utilities {
 		return talon;
 	}
 	
+	@Deprecated
 	public static void config(WPI_TalonSRX talon) {
 		// OUTPUTS
 		talon.setInverted(false);

@@ -16,48 +16,51 @@ public class OI {
 	public static final XboxController driver = new XboxController(0);
 	public static final XboxController op = new XboxController(1);
 	
+	Button A;
+	Button B;
+	Button X;
+	Button Y;
+	Button RB;
+	Button LB;
+	Button RS;
+	Button LS;
+	Button Menu;
+	Button Start;
+	Button POVU;
+	Button POVR;
+	Button POVD;
+	Button POVL;
+	
 	private final double DEADZONE = 0.1;
+
 	
 	public OI(){}
 	
+	
+	
 	public void initDriver(){
-		//init buttons
-		Button A = new JoystickButton(driver, 0);
-		Button B = new JoystickButton(driver, 1);
-		Button X = new JoystickButton(driver, 2);
-		Button Y = new JoystickButton(driver, 3);
-		Button RB = new JoystickButton(driver, 4);
-		Button LB = new JoystickButton(driver, 5);
-		Button RS = new JoystickButton(driver, 6);
-		Button LS = new JoystickButton(driver, 7);
-		Button Menu = new JoystickButton(driver, 8);
-		Button Start = new JoystickButton(driver, 9);
-		Button POVU = new Button() {public boolean get(){return driver.getPOV() == 0;}};
-		Button POVR = new Button() {public boolean get(){return driver.getPOV() == 90;}};
-		Button POVD = new Button() {public boolean get(){return driver.getPOV() == 180;}};
-		Button POVL = new Button() {public boolean get(){return driver.getPOV() == 270;}};
-		//link buttons to commands
-		
+		init(driver);
 	}
 	
 	public void initOp(){
-		//init buttons
-		Button A = new JoystickButton(op, 0);
-		Button B = new JoystickButton(op, 1);
-		Button X = new JoystickButton(op, 2);
-		Button Y = new JoystickButton(op, 3);
-		Button RB = new JoystickButton(op, 4);
-		Button LB = new JoystickButton(op, 5);
-		Button RS = new JoystickButton(op, 6);
-		Button LS = new JoystickButton(op, 7);
-		Button Menu = new JoystickButton(op, 8);
-		Button Start = new JoystickButton(op, 9);
-		Button POVU = new Button() {public boolean get(){return op.getPOV() == 0;}};
-		Button POVR = new Button() {public boolean get(){return op.getPOV() == 90;}};
-		Button POVD = new Button() {public boolean get(){return op.getPOV() == 180;}};
-		Button POVL = new Button() {public boolean get(){return op.getPOV() == 270;}};
-		//link buttons to commands
-		
+		init(op);
+	}
+	
+	public void init(XboxController controller) {
+		A = new JoystickButton(controller, 0);
+		B = new JoystickButton(controller, 1);
+		X = new JoystickButton(controller, 2);
+		Y = new JoystickButton(controller, 3);
+		RB = new JoystickButton(controller, 4);
+		LB = new JoystickButton(controller, 5);
+		RS = new JoystickButton(controller, 6);
+		LS = new JoystickButton(controller, 7);
+		Menu = new JoystickButton(controller, 8);
+		Start = new JoystickButton(controller, 9);
+		POVU = new Button() {public boolean get(){return controller.getPOV() == 0;}};
+		POVR = new Button() {public boolean get(){return controller.getPOV() == 90;}};
+		POVD = new Button() {public boolean get(){return controller.getPOV() == 180;}};
+		POVL = new Button() {public boolean get(){return controller.getPOV() == 270;}};
 	}
 	
 	public static double getDRX(){
