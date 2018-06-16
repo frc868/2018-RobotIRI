@@ -22,9 +22,9 @@ import robot.Utilities;
 public class Tilt extends Subsystem {
 	
 	// TODO insert actual numbers for these values
-	public static final double UP = 0;
-	public static final double MIDDLE = 0;
-	public static final double DOWN = 0;
+	public static final double UP = 921;
+	public static final double MIDDLE = 895;
+	public static final double DOWN = 847;
 	
 	private HoundTalon tiltMotor;
 

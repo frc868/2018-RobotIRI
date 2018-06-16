@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import robot.commands.arm.CloseArm;
+import robot.commands.arm.OpenArm;
 import robot.subsystems.Arm;
 import robot.subsystems.Intake;
 
@@ -54,6 +56,12 @@ public class Robot extends TimedRobot {
 		powerpack = new PowerPack();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+
+		SmartDashboard.putData("arm", Robot.arm);
+
+		SmartDashboard.putData("closeArm", new CloseArm());
+		SmartDashboard.putData("openArm", new OpenArm());
+		
 	}
 
 	/**

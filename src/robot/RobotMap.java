@@ -16,9 +16,7 @@ package robot;
 public class RobotMap {
 	
 	
-	
-	public static int ARM = 0; //TODO: put the real value in here
-	
+		
 	// Motors (CAN)
 	public static final int INTAKE_LEFT = 14;
 	public static final int INTAKE_RIGHT = 15;
@@ -29,7 +27,7 @@ public class RobotMap {
 	public static final int TILT = 13;
 	
 	// Pneumatics (PCM)
-	public static final int ARMS = 6;
+	public static final int ARM= 6;
 	public static final int WINCH_TRANSMISSION = 5;
 	public static final int WINCH_BRAKE = 4;
 	public static final int HOOK = 0;

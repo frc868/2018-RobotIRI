@@ -6,8 +6,14 @@ import robot.Robot;
 
 public class OpenArm extends Command {
 	
-	
 
+	public OpenArm()	{
+		requires(Robot.arm);
+		
+	}
+
+	
+	
 	protected void initialize() {
 		Robot.arm.open();
     }
@@ -15,7 +21,7 @@ public class OpenArm extends Command {
     protected void execute() {}
 
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     protected void end() {}
