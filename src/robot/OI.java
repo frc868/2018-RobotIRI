@@ -52,22 +52,24 @@ public class OI {
 	}
 	
 	public void init(XboxController controller) {
-		A = new JoystickButton(controller, 0);
+		A = new JoystickButton(controller, 1);
 		A.whenPressed(new CloseArm());
-		B = new JoystickButton(controller, 1);
+		B = new JoystickButton(controller, 2);
 		B.whenPressed(new OpenArm());
-		X = new JoystickButton(controller, 2);
-		X.whenPressed(new TurnIntakeOff());
-		Y = new JoystickButton(controller, 3);
+		X = new JoystickButton(controller, 3);
+		X.whenPressed(new SetIntakePower(-.5));
+		X.whenReleased(new TurnIntakeOff());
+		Y = new JoystickButton(controller, 4);
 		Y.whenPressed(new SetIntakePower(.5));
-		RB = new JoystickButton(controller, 4);
+		Y.whenReleased(new TurnIntakeOff());
+		RB = new JoystickButton(controller, 5);
 		RB.whenPressed(new SetElevatorPower(.5));
-		LB = new JoystickButton(controller, 5);
+		LB = new JoystickButton(controller, 6);
 		RB.whenPressed(new SetElevatorPower(0));
-		RS = new JoystickButton(controller, 6);
-		LS = new JoystickButton(controller, 7);
-		Menu = new JoystickButton(controller, 8);
-		Start = new JoystickButton(controller, 9);
+		RS = new JoystickButton(controller, 7);
+		LS = new JoystickButton(controller, 8);
+		Menu = new JoystickButton(controller, 9);
+		Start = new JoystickButton(controller, 10);
 		POVU = new Button() {public boolean get(){return controller.getPOV() == 0;}};
 		POVR = new Button() {public boolean get(){return controller.getPOV() == 90;}};
 		POVD = new Button() {public boolean get(){return controller.getPOV() == 180;}};
