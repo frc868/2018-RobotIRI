@@ -165,51 +165,51 @@ public class OI {
 	}
 	
 	public static double getDRX(){
-		return driver.getRawAxis(0);
-	}
-	
-	public static double getDRY(){
-		return driver.getRawAxis(1);
-	}
-	
-	public static double getDLX(){
-		return driver.getRawAxis(2);
-	}
-	
-	public static double getDLY(){
-		return driver.getRawAxis(3);
-	}
-	
-	public static double getDRT(){
 		return driver.getRawAxis(4);
 	}
 	
-	public static double getDLT(){
+	public static double getDRY(){
 		return driver.getRawAxis(5);
 	}
 	
+	public static double getDLX(){
+		return driver.getRawAxis(0);
+	}
+	
+	public static double getDLY(){
+		return driver.getRawAxis(1);
+	}
+	
+	public static double getDRT(){
+		return driver.getRawAxis(3);
+	}
+	
+	public static double getDLT(){
+		return driver.getRawAxis(2);
+	}
+	
 	public static double getORX(){
-		return op.getRawAxis(0);
-	}
-	
-	public static double getORY(){
-		return op.getRawAxis(1);
-	}
-	
-	public static double getOLX(){
-		return op.getRawAxis(2);
-	}
-	
-	public static double getOLY(){
-		return op.getRawAxis(3);
-	}
-	
-	public static double getORT(){
 		return op.getRawAxis(4);
 	}
 	
-	public static double getOLT(){
+	public static double getORY(){
 		return op.getRawAxis(5);
+	}
+	
+	public static double getOLX(){
+		return op.getRawAxis(0);
+	}
+	
+	public static double getOLY(){
+		return op.getRawAxis(1);
+	}
+	
+	public static double getORT(){
+		return op.getRawAxis(3);
+	}
+	
+	public static double getOLT(){
+		return op.getRawAxis(2);
 	}
 	
 	public void smartDashUpdate(){

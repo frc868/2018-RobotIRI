@@ -1,12 +1,14 @@
 package robot.commands.drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import robot.OI;
+import robot.Robot;
 import robot.subsystems.DriveTrain;
 
 public class ArcadeDrive extends Command {
 	
-	DriveTrain dt = new DriveTrain();
+	DriveTrain dt = Robot.drivetrain;
 	public boolean finished = false;
 
     public ArcadeDrive() {
@@ -21,7 +23,9 @@ public class ArcadeDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	dt.setPOut(OI.getDLY() - OI.getDRX(), OI.getDLY() + OI.getDRX());
+    	dt.setPOut(OI.getDLY() + OI.getDRX(), OI.getDLY() - OI.getDRX());
+    	SmartDashboard.putNumber("DLY", OI.getDLY());
+    	SmartDashboard.putNumber("Velocity", (dt.getEncoderLSpeed() + dt.getEncoderRSpeed())/2);
     	
     }
 

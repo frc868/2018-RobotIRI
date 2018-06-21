@@ -1,6 +1,7 @@
 package robot.commands.drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
+import robot.Robot;
 import robot.subsystems.DriveTrain;
 
 /**
@@ -8,12 +9,11 @@ import robot.subsystems.DriveTrain;
  */
 public class AutoShiftA extends Command {
 	
-	private DriveTrain dt = new DriveTrain();
+	DriveTrain dt = Robot.drivetrain;
 	private final double shiftAt = 4000;
 	private double shiftTo;
 
     public AutoShiftA() {
-        requires(dt);
     }
 
     protected void initialize() {

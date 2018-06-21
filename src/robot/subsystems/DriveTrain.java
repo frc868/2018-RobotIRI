@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import robot.OI;
 import robot.RobotMap;
+import robot.commands.drivetrain.ArcadeDrive;
 
 public class DriveTrain extends Subsystem {
 	
@@ -23,6 +24,7 @@ public class DriveTrain extends Subsystem {
 		trainRight2 = new WPI_TalonSRX(RobotMap.DRIVETRAINRIGHT2);
 		trainLeft = new WPI_TalonSRX(RobotMap.DRIVETRAINLEFT);
 		trainLeft2 = new WPI_TalonSRX(RobotMap.DRIVETRAINLEFT2);
+		trans = new Solenoid(RobotMap.DRIVETRANS);
 		
 		trainRight2.follow(trainRight);
 		trainLeft2.follow(trainLeft);
@@ -38,6 +40,10 @@ public class DriveTrain extends Subsystem {
 		
 		trainRight.config_kD(0, 0, 10);
 		trainLeft.config_kD(0, 0, 10);
+		
+		trainLeft.setInverted(true);
+		trainLeft2.setInverted(true);
+		
 	}
 	
 	//main method for setting percent motor speeds
@@ -58,9 +64,13 @@ public class DriveTrain extends Subsystem {
 		trainLeft.set(control, left);
 	}
 	
-	public void setTrans(boolean trans){
-		if(!this.trans.get() == trans) {
-			this.trans.set(trans);
+	public void setTrans(boolean state){
+		if(!trans.get() == state) {
+			trans.set(state);
+		} else if(trans.get() == state) {
+			
+		} else {
+			trans.set(false);
 		}
 	}
 	
@@ -86,12 +96,15 @@ public class DriveTrain extends Subsystem {
 	
 	//checks range of input for motors using percent output
 	public double checkPOut(double in){
-		in = in >= 1 ? in : 1;
-		in = in <= -1 ? in : -1;
+		if(in > 1) {
+			in = 1;
+		} else if (in < -1) {
+			in = -1;
+		}
 		return in;
 	}
 	
 	protected void initDefaultCommand() {
-		
+		setDefaultCommand(new ArcadeDrive());
 	}
 }

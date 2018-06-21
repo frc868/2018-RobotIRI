@@ -17,6 +17,7 @@ import robot.commands.arm.CloseArm;
 import robot.commands.arm.OpenArm;
 import robot.commands.drivetrain.AutoShiftA;
 import robot.subsystems.Arm;
+import robot.subsystems.DriveTrain;
 import robot.subsystems.Intake;
 
 import robot.subsystems.PowerPack;
@@ -36,7 +37,7 @@ public class Robot extends TimedRobot {
 	public static Arm arm; 
 	public static Intake intake;
 	public static Hook hook;
-
+	public static DriveTrain drivetrain;
 	public static PowerPack powerpack;
 
 	public static Tilt tilt;
@@ -55,12 +56,13 @@ public class Robot extends TimedRobot {
 		arm = new Arm(); 
 		intake = new Intake();
 		powerpack = new PowerPack();
+		drivetrain = new DriveTrain();
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 		SmartDashboard.putData("arm", Robot.arm);
-
+		SmartDashboard.putData("DriveTrain", drivetrain);
 		SmartDashboard.putData("closeArm", new CloseArm());
 		SmartDashboard.putData("openArm", new OpenArm());
 		

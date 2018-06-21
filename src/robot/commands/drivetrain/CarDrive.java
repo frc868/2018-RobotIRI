@@ -2,11 +2,12 @@ package robot.commands.drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 import robot.OI;
+import robot.Robot;
 import robot.subsystems.DriveTrain;
 
 public class CarDrive extends Command {
 	
-	private DriveTrain dt = new DriveTrain();
+	DriveTrain dt = Robot.drivetrain;
 	public boolean finished = false;
 
     public CarDrive() {
