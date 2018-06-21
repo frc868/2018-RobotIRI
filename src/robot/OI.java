@@ -34,7 +34,7 @@ import robot.subsystems.Tilt;
 public class OI {
 
 	public static final XboxController driver = new XboxController(0);
-	public static final XboxController operator = new XboxController(1);
+	public static final XboxController op = new XboxController(1);
 	public static boolean driveDirection = true;
 	
 	// TODO tune this, 5% to 10%
@@ -110,59 +110,111 @@ public class OI {
 //		cubeRumble.whenActive(new RumbleOperator(1));
 //		cubeRumble.whenInactive(new RumbleOperator(1));
 
-		Button bA = new JoystickButton(operator, 1);
+		Button bA = new JoystickButton(op, 1);
 		// Set elevator to DOWN position
 //		bA.whenPressed(new SetElevatorPosition(ElevatorPosition.COLLECT)); TODO
 
-		Button bB = new JoystickButton(operator, 2);
+		Button bB = new JoystickButton(op, 2);
 		// Set elevator to SWITCH position
 //		bB.whenPressed(new SetElevatorPosition(ElevatorPosition.SWITCH)); TODO
 
-		Button bX = new JoystickButton(operator, 3);
+		Button bX = new JoystickButton(op, 3);
 		// Actuate collector arms
 		bX.whenPressed(new OpenArm());
 		bX.whenReleased(new CloseArm());
 
-		Button bY = new JoystickButton(operator, 4);
+		Button bY = new JoystickButton(op, 4);
 		// Set elevator to SCALE position
 //		bY.whenPressed(new SetElevatorPosition(ElevatorPosition.SCALE));
 
-		Button LB = new JoystickButton(operator, 5);
+		Button LB = new JoystickButton(op, 5);
 		// OperatorClimberControl (joystick)
 //		LB.whileHeld(new GamepadClimberControl(operator, 1));
 
-		Button RB = new JoystickButton(operator, 6);
+		Button RB = new JoystickButton(op, 6);
 		// OperatorElevatorControl (joystick)
 //		RB.whileHeld(new GamepadElevatorControl(operator, 5));
 
-		Button arrowUp = getPOVButton(operator, 0);
+		Button arrowUp = getPOVButton(op, 0);
 		// Set Tilt to UP
 		arrowUp.whenPressed(new SetTiltPosition(TiltPosition.UP));
 
-		Button arrowRight = getPOVButton(operator, 90);
+		Button arrowRight = getPOVButton(op, 90);
 		// Set Tilt to MIDDLE
 		arrowRight.whenPressed(new SetTiltPosition(TiltPosition.MIDDLE));
 
-		Button arrowDown = getPOVButton(operator, 180);
+		Button arrowDown = getPOVButton(op, 180);
 		// Set Tilt to DOWN
 		arrowDown.whenPressed(new SetTiltPosition(TiltPosition.DOWN));
 		
-		Button arrowLeft = getPOVButton(operator, 270);
+		Button arrowLeft = getPOVButton(op, 270);
 		CommandGroup intakeGroup = new CommandGroup();
 		intakeGroup.addParallel(new SetTiltPosition(TiltPosition.DOWN));
 		intakeGroup.addParallel(new GrabCube());
 		intakeGroup.addParallel(new PullCube());
 		arrowLeft.whileHeld(intakeGroup); //might get some weird results with it spam open/close arms
 		
-		Button start = new JoystickButton(operator, 8);
+		Button start = new JoystickButton(op, 8);
 		// flash LED signal to human player
 //		start.whenPressed(new FlashLEDs(0, 0, 255, 0.25, 3));
 		
-		Button select = new JoystickButton(operator, 7);
+		Button select = new JoystickButton(op, 7);
 		// Enable/disable elevator limits
 		select.whileHeld(new SetElevatorLimits(false));
 		select.whenReleased(new SetElevatorLimits(true));
 
+	}
+	
+	public static double getDRX(){
+		return driver.getRawAxis(0);
+	}
+	
+	public static double getDRY(){
+		return driver.getRawAxis(1);
+	}
+	
+	public static double getDLX(){
+		return driver.getRawAxis(2);
+	}
+	
+	public static double getDLY(){
+		return driver.getRawAxis(3);
+	}
+	
+	public static double getDRT(){
+		return driver.getRawAxis(4);
+	}
+	
+	public static double getDLT(){
+		return driver.getRawAxis(5);
+	}
+	
+	public static double getORX(){
+		return op.getRawAxis(0);
+	}
+	
+	public static double getORY(){
+		return op.getRawAxis(1);
+	}
+	
+	public static double getOLX(){
+		return op.getRawAxis(2);
+	}
+	
+	public static double getOLY(){
+		return op.getRawAxis(3);
+	}
+	
+	public static double getORT(){
+		return op.getRawAxis(4);
+	}
+	
+	public static double getOLT(){
+		return op.getRawAxis(5);
+	}
+	
+	public void smartDashUpdate(){
+		
 	}
 
 	/**
@@ -193,11 +245,11 @@ public class OI {
 	
 	public static void rumbleOperator(boolean rumble) {
 		if (rumble) {
-			operator.setRumble(RumbleType.kLeftRumble, 1);
-			operator.setRumble(RumbleType.kRightRumble, 1);
+			op.setRumble(RumbleType.kLeftRumble, 1);
+			op.setRumble(RumbleType.kRightRumble, 1);
 		} else {
-			operator.setRumble(RumbleType.kLeftRumble, 0);
-			operator.setRumble(RumbleType.kRightRumble, 0);
+			op.setRumble(RumbleType.kLeftRumble, 0);
+			op.setRumble(RumbleType.kRightRumble, 0);
 		}
 	}
 }
