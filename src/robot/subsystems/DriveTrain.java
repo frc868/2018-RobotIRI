@@ -59,7 +59,9 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public void setTrans(boolean trans){
-		this.trans.set(trans);
+		if(!this.trans.get() == trans) {
+			this.trans.set(trans);
+		}
 	}
 	
 	public void toggleTrans(){

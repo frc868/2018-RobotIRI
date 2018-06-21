@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import robot.commands.arm.CloseArm;
 import robot.commands.arm.OpenArm;
+import robot.commands.drivetrain.AutoShiftA;
 import robot.subsystems.Arm;
 import robot.subsystems.Intake;
 
@@ -124,6 +125,7 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		new AutoShiftA().start();
 	}
 
 	/**

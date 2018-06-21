@@ -9,7 +9,7 @@ import robot.subsystems.DriveTrain;
 public class AutoShiftA extends Command {
 	
 	private DriveTrain dt = new DriveTrain();
-	private final double shiftAt = 10;
+	private final double shiftAt = 4000;
 	private double shiftTo;
 
     public AutoShiftA() {
@@ -17,12 +17,15 @@ public class AutoShiftA extends Command {
     }
 
     protected void initialize() {
-    	dt.setTrans(false);
-    	dt.setPOut(0, 0);
+    	
     }
 
     protected void execute() {
-    	
+    	if((dt.getEncoderLSpeed() + dt.getEncoderRSpeed())/2 > shiftAt) {
+    		dt.setTrans(true);
+    	} else {
+    		dt.setTrans(false);
+    	}
     }
 
     protected boolean isFinished() {
