@@ -54,7 +54,6 @@ public class Robot extends TimedRobot {
 		arm = new Arm(); 
 		intake = new Intake();
 		powerpack = new PowerPack();
-		m_oi.initDriver();
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);

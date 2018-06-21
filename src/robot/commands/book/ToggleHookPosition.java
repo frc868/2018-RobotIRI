@@ -1,4 +1,4 @@
-package robot.commands.arm;
+package robot.commands.book;
 
 import robot.Robot;
 
