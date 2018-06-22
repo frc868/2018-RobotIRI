@@ -57,15 +57,17 @@ public class Robot extends TimedRobot {
 		intake = new Intake();
 		powerpack = new PowerPack();
 		drivetrain = new DriveTrain();
-		
+		tilt = new Tilt();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 		SmartDashboard.putData("arm", Robot.arm);
 		SmartDashboard.putData("DriveTrain", drivetrain);
-		SmartDashboard.putData("closeArm", new CloseArm());
+		SmartDashboard.putData("clo seArm", new CloseArm());
 		SmartDashboard.putData("openArm", new OpenArm());
 		
+		m_oi.setupDriver();
+		m_oi.setupOperator();
 	}
 
 	/**

@@ -21,8 +21,12 @@ import robot.commands.arm.CloseArm;
 import robot.commands.arm.GrabCube;
 import robot.commands.arm.OpenArm;
 import robot.commands.intake.PullCube;
+import robot.commands.intake.SetIntakePower;
+import robot.commands.intake.TurnIntakeOff;
 import robot.commands.powerpack.SetElevatorLimits;
 import robot.commands.powerpack.SetElevatorPosition;
+import robot.commands.powerpack.SetElevatorPower;
+import robot.commands.powerpack.SetPowerPackHold;
 import robot.commands.tilt.SetTiltPosition;
 import robot.commands.tilt.SetTiltPosition.TiltPosition;
 import robot.subsystems.Tilt;
@@ -54,6 +58,8 @@ public class OI {
 //		Robot.intake.setDefaultCommand(new DualGamepadIntakeControl(driver, operator, 3, 2));
 
 		Button bA = new JoystickButton(driver, 1);
+		bA.whenPressed(new SetIntakePower(1));
+		bA.whenReleased(new TurnIntakeOff());
 		// lower hook
 //		bA.whenPressed(new SetHookPosition(false));
 		
@@ -66,6 +72,8 @@ public class OI {
 //		bB.whenPressed(jiggleHook);
 
 		Button bY = new JoystickButton(driver, 4);
+		bY.whenPressed(new SetIntakePower(-1));
+		bY.whenReleased(new TurnIntakeOff());
 		// ready for climb: raise hook, flip drive, and raise tilt
 //		bY.whenPressed(new SetHookPosition(true));
 //		bY.whenPressed(new SetDriveDirection(false));
@@ -109,8 +117,10 @@ public class OI {
 //		// rumble when we first lose a cube
 //		cubeRumble.whenActive(new RumbleOperator(1));
 //		cubeRumble.whenInactive(new RumbleOperator(1));
-
+		
 		Button bA = new JoystickButton(op, 1);
+		bA.whenPressed(new SetElevatorPower(-.25));
+		bA.whenReleased(new SetPowerPackHold());
 		// Set elevator to DOWN position
 //		bA.whenPressed(new SetElevatorPosition(ElevatorPosition.COLLECT)); TODO
 
@@ -124,6 +134,9 @@ public class OI {
 		bX.whenReleased(new CloseArm());
 
 		Button bY = new JoystickButton(op, 4);
+		
+		bY.whenPressed(new SetElevatorPower(.25));
+		bY.whenReleased(new SetPowerPackHold());
 		// Set elevator to SCALE position
 //		bY.whenPressed(new SetElevatorPosition(ElevatorPosition.SCALE));
 

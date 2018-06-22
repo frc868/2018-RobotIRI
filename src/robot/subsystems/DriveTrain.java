@@ -67,11 +67,7 @@ public class DriveTrain extends Subsystem {
 	public void setTrans(boolean state){
 		if(!trans.get() == state) {
 			trans.set(state);
-		} else if(trans.get() == state) {
-			
-		} else {
-			trans.set(false);
-		}
+		} 
 	}
 	
 	public void toggleTrans(){
