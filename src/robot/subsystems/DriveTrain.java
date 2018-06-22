@@ -87,11 +87,11 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double getEncoderLSpeed(){
-		return trainLeft.getSensorCollection().getQuadratureVelocity();
+		return trainLeft.getSelectedSensorVelocity(0);
 	}
 	
 	public double getEncoderRSpeed(){
-		return trainRight.getSensorCollection().getQuadratureVelocity();
+		return trainRight.getSelectedSensorVelocity(0);
 	}
 	
 	//checks range of input for motors using percent output
