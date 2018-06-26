@@ -1,10 +1,8 @@
 package robot.subsystems;
 
-import robot.RobotMap;
-
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import robot.RobotMap;
 
 /**
  * Represents the pneumatic arms that squeeze the box.

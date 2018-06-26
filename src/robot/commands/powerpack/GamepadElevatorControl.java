@@ -1,11 +1,8 @@
 package robot.commands.powerpack;
 
-import edu.wpi.first.wpilibj.command.Command;
-import robot.Robot;
-
-
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.Command;
+import robot.Robot;
 
 /**
  *

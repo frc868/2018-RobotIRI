@@ -3,7 +3,6 @@ package robot.subsystems;
 import edu.wpi.first.wpilibj.GyroBase;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import robot.gyrohelpers.BNO055;
 
 public class Gyro extends Subsystem {

@@ -10,7 +10,6 @@ package robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import robot.commands.arm.CloseArm;
@@ -18,13 +17,10 @@ import robot.commands.arm.OpenArm;
 import robot.commands.drivetrain.AutoShiftA;
 import robot.subsystems.Arm;
 import robot.subsystems.DriveTrain;
-import robot.subsystems.Intake;
-
-import robot.subsystems.PowerPack;
-
-import robot.subsystems.Tilt;
-
 import robot.subsystems.Hook;
+import robot.subsystems.Intake;
+import robot.subsystems.PowerPack;
+import robot.subsystems.Tilt;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot

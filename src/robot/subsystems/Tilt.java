@@ -6,14 +6,12 @@ package robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import robot.commands.tilt.*;
 import robot.HoundTalon;
 import robot.RobotMap;
 import robot.Utilities;
+import robot.commands.tilt.SetTiltPosition;
 
 /**
  *     NOTE: this is my first time ever writing robot code please don't yell at me
