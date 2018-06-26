@@ -17,14 +17,12 @@ import robot.commands.arm.OpenArm;
 import robot.commands.drivetrain.AutoShiftA;
 import robot.subsystems.Arm;
 import robot.subsystems.DriveTrain;
-<<<<<<< HEAD
+
 import robot.subsystems.Intake;
 import robot.subsystems.Gyro;
 
-=======
 import robot.subsystems.Hook;
 import robot.subsystems.Intake;
->>>>>>> e7f6baf2d537ba0b6907ebcc864d09aec1360d37
 import robot.subsystems.PowerPack;
 import robot.subsystems.Tilt;
 /**
@@ -40,11 +38,9 @@ public class Robot extends TimedRobot {
 	public static Intake intake;
 	public static Hook hook;
 	public static DriveTrain drivetrain;
-<<<<<<< HEAD
+
 	public static Gyro gyro;
 
-=======
->>>>>>> e7f6baf2d537ba0b6907ebcc864d09aec1360d37
 	public static PowerPack powerpack;
 
 	public static Tilt tilt;
@@ -64,11 +60,11 @@ public class Robot extends TimedRobot {
 		intake = new Intake();
 		powerpack = new PowerPack();
 		drivetrain = new DriveTrain();
-<<<<<<< HEAD
+
 		gyro = new Gyro();
-=======
+
 		tilt = new Tilt();
->>>>>>> e7f6baf2d537ba0b6907ebcc864d09aec1360d37
+
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
