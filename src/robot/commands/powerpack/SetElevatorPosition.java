@@ -9,6 +9,13 @@ import robot.Robot;
 public class SetElevatorPosition extends Command {
 
     private double position;
+    
+    public static final double COLLECT = -25000;
+
+	public static final double SWITCH = 300000;
+
+	public static final double SCALE = 700000;
+    
 
 	public SetElevatorPosition(double position) {
         requires(Robot.powerpack);

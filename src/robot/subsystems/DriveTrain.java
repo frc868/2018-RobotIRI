@@ -18,6 +18,11 @@ public class DriveTrain extends Subsystem {
 	private TalonSRX trainLeft2;
 	private Solenoid trans;
 	
+	public static final double MAX_DRIVE_SPEED = 0.75;
+	public static final double MIN_DRIVE_SPEED = 0.3; // TODO: set deadband?
+	public static final double COUNTS_PER_INCH = 422;
+	
+	
 	public DriveTrain(){
 		trainRight = new WPI_TalonSRX(RobotMap.DRIVETRAINRIGHT);
 		trainRight2 = new WPI_TalonSRX(RobotMap.DRIVETRAINRIGHT2);
@@ -82,6 +87,38 @@ public class DriveTrain extends Subsystem {
 		return trainRight.getSensorCollection().getQuadratureVelocity();
 	}
 	
+	public double getRawLeftDistance() {
+		return trainLeft.getSelectedSensorPosition(0);
+	}
+
+	public double getRawLeftVelocity() {
+		return trainLeft.getSelectedSensorVelocity(0);
+	}
+
+	public double getRawRightDistance() {
+		return trainRight.getSelectedSensorPosition(0);
+	}
+
+	public double getRawRightVelocity() {
+		return trainRight.getSelectedSensorVelocity(0);
+	}
+
+	public double getRawAverageDistance() {
+		return (getRawRightDistance() + getRawLeftDistance()) / 2;
+	}
+
+	public double getScaledAverageDistance() {
+		return getRawAverageDistance() / COUNTS_PER_INCH;
+	}
+	
+	public double getScaledRightDistance() {
+		return getRawRightDistance() / COUNTS_PER_INCH;
+	}
+	
+	public double getScaledLeftDistance() {
+		return getRawLeftDistance() / COUNTS_PER_INCH;
+	}
+	
 	//checks range of input for motors using percent output
 	public double checkPOut(double in){
 		in = in >= 1 ? in : 1;
@@ -91,5 +128,9 @@ public class DriveTrain extends Subsystem {
 	
 	protected void initDefaultCommand() {
 		
+	}
+	
+	public void turnOff() {
+		setPOut(0,0);
 	}
 }

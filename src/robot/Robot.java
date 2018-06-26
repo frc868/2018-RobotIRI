@@ -16,7 +16,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import robot.commands.arm.CloseArm;
 import robot.commands.arm.OpenArm;
 import robot.subsystems.Arm;
+import robot.subsystems.DriveTrain;
 import robot.subsystems.Intake;
+import robot.subsystems.Gyro;
 
 import robot.subsystems.PowerPack;
 
@@ -35,6 +37,8 @@ public class Robot extends TimedRobot {
 	public static Arm arm; 
 	public static Intake intake;
 	public static Hook hook;
+	public static DriveTrain drivetrain;
+	public static Gyro gyro;
 
 	public static PowerPack powerpack;
 
@@ -54,6 +58,8 @@ public class Robot extends TimedRobot {
 		arm = new Arm(); 
 		intake = new Intake();
 		powerpack = new PowerPack();
+		drivetrain = new DriveTrain();
+		gyro = new Gyro();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
