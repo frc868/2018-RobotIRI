@@ -30,7 +30,7 @@ public class CenterRightSwitch extends CommandGroup {
     	addSequential(new DriveAngle(26, 0, 0.4), 1);
     	addSequential(new DriveStraight(65, 0.6, 26), 3);
     	addSequential(new DriveStraight(35, 0.4, 26), 1);
-    	addSequential(new TurnToAngleGyro(10), 0.5);
+    	//addSequential(new TurnToAngleGyro(10), 0.5); TODO TURN TO ANGLE
     	
     	// eject cube
     	addSequential(new SetIntakePower(-0.5), 0.5);
@@ -46,7 +46,7 @@ public class CenterRightSwitch extends CommandGroup {
     	addSequential(new DriveStraight(-20, -0.4, 37), 2);
     	
 //    	// grab another one
-    	addSequential(new TurnToAngleGyro(0), 1.5);
+    	//addSequential(new TurnToAngleGyro(0), 1.5); TODO TURN TO ANGLE
     	addParallel(new GrabCube(), 3);
     	addParallel(new PullCube(), 3);
     	addSequential(new DriveStraightUntilCubeDetected(40, 0.5), 1);
@@ -54,17 +54,17 @@ public class CenterRightSwitch extends CommandGroup {
     	
     	// line up to switch again
 //    	addSequential(new WaitCommand(0.5));
-    	addSequential(new TurnToAngleGyro(70), 1);
+    	//addSequential(new TurnToAngleGyro(70), 1); TODO TURN TO ANGLE
     	addParallel(new DelayedCommand(new SetElevatorPosition(SetElevatorPosition.SWITCH), 0.5));
     	addSequential(new DriveStraight(40, 0.5), 2);
-    	addSequential(new TurnToAngleGyro(10), 1);
+    	//addSequential(new TurnToAngleGyro(10), 1); TODO TURN TO ANGLE
     	addSequential(new DriveStraight(20, 0.4), 1);
     	
     	addSequential(new SetIntakePower(-0.5), 0.5);
     	
     	addParallel(new DelayedCommand(new SetElevatorPosition(SetElevatorPosition.COLLECT), 0.5));
     	addSequential(new DriveStraight(-26, -0.4), 1);
-    	addSequential(new TurnToAngleGyro(-55), 1);
+    	//addSequential(new TurnToAngleGyro(-55), 1); TODO TURN TO ANGLE
     	addSequential(new CollectCube(35), 2);
     }
 }
