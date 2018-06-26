@@ -10,21 +10,23 @@ package robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import robot.commands.arm.CloseArm;
 import robot.commands.arm.OpenArm;
+import robot.commands.drivetrain.AutoShiftA;
 import robot.subsystems.Arm;
 import robot.subsystems.DriveTrain;
+<<<<<<< HEAD
 import robot.subsystems.Intake;
 import robot.subsystems.Gyro;
 
-import robot.subsystems.PowerPack;
-
-import robot.subsystems.Tilt;
-
+=======
 import robot.subsystems.Hook;
+import robot.subsystems.Intake;
+>>>>>>> e7f6baf2d537ba0b6907ebcc864d09aec1360d37
+import robot.subsystems.PowerPack;
+import robot.subsystems.Tilt;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -38,8 +40,11 @@ public class Robot extends TimedRobot {
 	public static Intake intake;
 	public static Hook hook;
 	public static DriveTrain drivetrain;
+<<<<<<< HEAD
 	public static Gyro gyro;
 
+=======
+>>>>>>> e7f6baf2d537ba0b6907ebcc864d09aec1360d37
 	public static PowerPack powerpack;
 
 	public static Tilt tilt;
@@ -59,15 +64,21 @@ public class Robot extends TimedRobot {
 		intake = new Intake();
 		powerpack = new PowerPack();
 		drivetrain = new DriveTrain();
+<<<<<<< HEAD
 		gyro = new Gyro();
+=======
+		tilt = new Tilt();
+>>>>>>> e7f6baf2d537ba0b6907ebcc864d09aec1360d37
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 
 		SmartDashboard.putData("arm", Robot.arm);
-
-		SmartDashboard.putData("closeArm", new CloseArm());
+		SmartDashboard.putData("DriveTrain", drivetrain);
+		SmartDashboard.putData("clo seArm", new CloseArm());
 		SmartDashboard.putData("openArm", new OpenArm());
 		
+		m_oi.setupDriver();
+		m_oi.setupOperator();
 	}
 
 	/**
@@ -130,6 +141,7 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		new AutoShiftA().start();
 	}
 
 	/**

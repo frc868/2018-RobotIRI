@@ -2,11 +2,12 @@ package robot.commands.drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 import robot.OI;
+import robot.Robot;
 import robot.subsystems.DriveTrain;
 
 public class SemiShift extends Command {
 	
-	private DriveTrain dt = new DriveTrain();
+	DriveTrain dt = Robot.drivetrain;
 	private final double minShift = 0.5;
 	public boolean finished = false;
 	
