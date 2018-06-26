@@ -77,9 +77,9 @@ public class AutonLauncher {
 	}
 	
 	public static Command getSideScale(FieldState field) {
-		if (field.getRobotPosition() == Position.Right && field.getScalePosition() == Position.Right) {
+		if (field.getRobotStartPos() == Position.Right && field.getScalePos() == Position.Right) {
 			return new RightScaleSide();
-		} else if (field.getRobotPosition() == Position.Left && field.getScalePosition() == Position.Left) {
+		} else if (field.getRobotStartPos() == Position.Left && field.getScalePos() == Position.Left) {
 			return new LeftScaleSide();
 		} else {
 			return getSwitch(field);
@@ -87,14 +87,14 @@ public class AutonLauncher {
 	}
 	
 	public static Command getAssistScale(FieldState field) {
-		if (field.getRobotPosition() == Position.Right) {
-			if (field.getScalePosition() == Position.Right) {
+		if (field.getRobotStartPos() == Position.Right) {
+			if (field.getScalePos() == Position.Right) {
 				return new RightScaleSide();
 			} else {
 				return new LeftCross();
 			}
-		} else if (field.getRobotPosition() == Position.Left) {
-			if (field.getScalePosition() == Position.Left) {
+		} else if (field.getRobotStartPos() == Position.Left) {
+			if (field.getScalePos() == Position.Left) {
 				return new LeftScaleSide();
 			} else {
 				return new RightCross();
@@ -105,20 +105,20 @@ public class AutonLauncher {
 	}
 
 	public static Command getSwitch(FieldState field) {
-		if (field.getRobotPosition() == Position.Middle) {
-			if (field.getSwitchPosition() == Position.Right) {
+		if (field.getRobotStartPos() == Position.Middle) {
+			if (field.getSwitchPos() == Position.Right) {
 				return new CenterRightSwitch();
 //				return new CenterRightSwitch();
-			} else if (field.getSwitchPosition() == Position.Left) {
+			} else if (field.getSwitchPos() == Position.Left) {
 				return new CenterLeftSwitch();
 //				return new CenterLeftSwitch();
 			} else {
 				return getBaseline();
 			}
-		} else if (field.getRobotPosition() == Position.Right && field.getSwitchPosition() == Position.Right) {
+		} else if (field.getRobotStartPos() == Position.Right && field.getSwitchPos() == Position.Right) {
 			return new RightSwitch();
 
-		} else if (field.getRobotPosition() == Position.Left && field.getSwitchPosition() == Position.Left) {
+		} else if (field.getRobotStartPos() == Position.Left && field.getSwitchPos() == Position.Left) {
 			return new LeftSwitch();
 		} else {
 			return getBaseline();
@@ -126,18 +126,18 @@ public class AutonLauncher {
 	}
 	
 	public static Command getAnyScale(FieldState field) {
-		if (field.getRobotPosition() == Position.Right) {
-			if (field.getScalePosition() == Position.Right) {
+		if (field.getRobotStartPos() == Position.Right) {
+			if (field.getScalePos() == Position.Right) {
 				return new RightScale();
-			} else if (field.getScalePosition() == Position.Left) {
+			} else if (field.getScalePos() == Position.Left) {
 				return new LeftScaleCross();
 			} else {
 				return getBaseline();
 			}
-		} else if (field.getRobotPosition() == Position.Left) {
-			if (field.getScalePosition() == Position.Right) {
+		} else if (field.getRobotStartPos() == Position.Left) {
+			if (field.getScalePos() == Position.Right) {
 				return new RightScaleCross();
-			} else if (field.getScalePosition() == Position.Left) {
+			} else if (field.getScalePos() == Position.Left) {
 				return new LeftScale();
 			} else {
 				return getBaseline();
@@ -148,7 +148,7 @@ public class AutonLauncher {
 	}
 	
 	public static Command getAheadScale(FieldState field) {
-		if (field.getRobotPosition() == field.getScalePosition()) {
+		if (field.getRobotStartPos() == field.getScalePos()) {
 			return getAnyScale(field);
 		} else {
 			return getSwitch(field);
