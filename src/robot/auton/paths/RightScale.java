@@ -1,18 +1,16 @@
 package robot.auton.paths;
 
-import com.techhounds.auton.util.CollectCube;
-import com.techhounds.auton.util.DelayedCommand;
-import com.techhounds.auton.util.DriveStraight;
-import com.techhounds.auton.util.DriveStraightRamp;
-import com.techhounds.auton.util.TurnToAngleGyro;
-import com.techhounds.intake.SetIntakePower;
-import com.techhounds.powerpack.SetElevatorPosition;
-import com.techhounds.powerpack.SetElevatorPosition.ElevatorPosition;
-import com.techhounds.tilt.SetTiltPosition;
-import com.techhounds.tilt.SetTiltPosition.TiltPosition;
-import com.techhounds.tilt.Tilt;
+
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import robot.auton.util.CollectCube;
+import robot.auton.util.DelayedCommand;
+import robot.auton.util.DriveStraight;
+import robot.commands.intake.SetIntakePower;
+import robot.commands.powerpack.SetElevatorPosition;
+import robot.commands.tilt.SetTiltPosition;
+import robot.commands.tilt.SetTiltPosition.TiltPosition;
+import robot.subsystems.Tilt;
 
 /**
  *
@@ -24,7 +22,7 @@ public class RightScale extends CommandGroup {
     	
        	// Set tilt/elevator
     	addParallel(new SetTiltPosition(TiltPosition.DOWN));    	
-    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.SCALE), 1.5)); // TODO wait
+    	addParallel(new DelayedCommand(new SetElevatorPosition(SetElevatorPosition.SCALE), 1.5)); // TODO wait
 
     	// drive up & curve
     	addSequential(new DriveStraightRamp(25, 0.5, 1)); // TODO faster
@@ -37,9 +35,9 @@ public class RightScale extends CommandGroup {
     	addSequential(new SetIntakePower(-0.50), 0.5);
     	
     	// back off and reset
-    	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
-    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.75));
-    	addSequential(new TurnToAngleGyro(-170), 2);
+    	addParallel(new SetTiltPosition(Tilt.DOWN));
+    	addParallel(new DelayedCommand(new SetElevatorPosition(SetElevatorPosition.COLLECT), 0.75));
+    	//addSequential(new TurnToAngleGyro(-170), 2);   TODO: TURNTOANGLEGYRO
     	
     	// grab second cube
     	addSequential(new DriveStraight(25, 0.45), 3);
@@ -51,16 +49,16 @@ public class RightScale extends CommandGroup {
 //		addSequential(new CollectCubeRetryConditional());
 //
     	// place second cube
-    	addSequential(new TurnToAngleGyro(-167), 1); // TODO lower timeout
-    	addParallel(new SetElevatorPosition(ElevatorPosition.SCALE));
+    	//addSequential(new TurnToAngleGyro(-167), 1); // TODO: TURNTOANGLEGYRO
+    	addParallel(new SetElevatorPosition(SetElevatorPosition.SCALE));
     	addSequential(new DriveStraight(-50, -0.45), 2); // TODO faster
-    	addSequential(new TurnToAngleGyro(-20, 1.5, 0.35)); // FIXME
+    	//addSequential(new TurnToAngleGyro(-20, 1.5, 0.35)); // TODO: TURNTOANGLEGYRO
     	addSequential(new SetIntakePower(-0.45), 0.5);
     	
     	// back off and reset
-    	addParallel(new SetTiltPosition(Tilt.POS_DOWN));
-    	addParallel(new DelayedCommand(new SetElevatorPosition(ElevatorPosition.COLLECT), 0.75));
-    	addSequential(new TurnToAngleGyro(-158), 2);
+    	addParallel(new SetTiltPosition(Tilt.DOWN));
+    	addParallel(new DelayedCommand(new SetElevatorPosition(SetElevatorPosition.COLLECT), 0.75));
+    	//addSequential(new TurnToAngleGyro(-158), 2);    TODO: TURNTOANGLEGYRO
     	
     	// grab third cube
     	addSequential(new DriveStraight(35, 0.45), 3); // FIXME
