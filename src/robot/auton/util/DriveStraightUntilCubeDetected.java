@@ -30,6 +30,6 @@ public class DriveStraightUntilCubeDetected extends DriveStraight {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return super.isFinished() || countsCubeIsDetected > 5;
+        return super.isFinished() || countsCubeIsDetected > COUNTS_NEEDED;
     }  
 }

@@ -9,6 +9,7 @@ import robot.auton.util.DriveAngle;
 import robot.auton.util.DriveStraight;
 import robot.auton.util.DriveStraightUntilCubeDetected;
 import robot.commands.arm.GrabCube;
+import robot.commands.intake.PullCube;
 import robot.commands.intake.SetIntakePower;
 import robot.commands.powerpack.SetElevatorPosition;
 import robot.commands.tilt.SetTiltPosition;
@@ -47,7 +48,7 @@ public class CenterRightSwitch extends CommandGroup {
 //    	// grab another one
     	addSequential(new TurnToAngleGyro(0), 1.5);
     	addParallel(new GrabCube(), 3);
-    	addParallel(new Pullcube(), 3);
+    	addParallel(new PullCube(), 3);
     	addSequential(new DriveStraightUntilCubeDetected(40, 0.5), 1);
     	addSequential(new DriveStraightUntilCubeDetected(10, 0.3), 0.5);
     	
