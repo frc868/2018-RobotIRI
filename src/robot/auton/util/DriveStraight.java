@@ -13,15 +13,19 @@ public class DriveStraight extends Command {
 	private boolean needAngle;
 
     public DriveStraight(double targetDistance, double targetPower) {
-      this(targetDistance, targetPower, 0);
-      needAngle = true; 
+		requires(Robot.drivetrain); 
+		this.targetDistance = targetDistance * -1;
+		this.targetPower = targetPower * -1;
+		needAngle = true; 
     }
     
     public DriveStraight(double targetDistance, double targetPower, double targetAngle) {
     	requires(Robot.drivetrain); 
-    	this.targetDistance = targetDistance;
-    	this.targetPower = targetAngle;
+    	this.targetDistance = targetDistance * -1;
+    	this.targetPower = targetPower * -1;
     	this.targetAngle = targetAngle;
+    	
+    	
     }
     
 
@@ -45,8 +49,10 @@ public class DriveStraight extends Command {
     		angleP *= -1;
     	}
     	
-    	Robot.drivetrain.setPOut(powerRight * (1+angleP), powerLeft * (1-angleP));
+    	System.out.println("running, " + targetPower);
     	
+    	Robot.drivetrain.setPOut(powerRight * (1-angleP), powerLeft * (1+angleP));
+    	    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

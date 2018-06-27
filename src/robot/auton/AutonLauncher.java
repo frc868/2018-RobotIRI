@@ -5,19 +5,6 @@ import robot.auton.FieldState.Position;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import robot.auton.paths.Baseline;
-import robot.auton.paths.CenterLeftSwitch;
-import robot.auton.paths.CenterRightSwitch;
-import robot.auton.paths.LeftCross;
-import robot.auton.paths.LeftScale;
-import robot.auton.paths.LeftScaleCross;
-import robot.auton.paths.LeftScaleSide;
-import robot.auton.paths.LeftSwitch;
-import robot.auton.paths.RightCross;
-import robot.auton.paths.RightScale;
-import robot.auton.paths.RightScaleCross;
-import robot.auton.paths.RightScaleSide;
-import robot.auton.paths.RightSwitch;
 
 /**
  * This is the main entry point for our match autonomous mode.
@@ -27,7 +14,7 @@ import robot.auton.paths.RightSwitch;
  */
 public class AutonLauncher {
 
-	enum Objective {
+	/*enum Objective {
 		SCALE,
 		SWITCH,
 		BASELINE,
@@ -153,5 +140,5 @@ public class AutonLauncher {
 		} else {
 			return getSwitch(field);
 		}
-	}
+	} */
 }

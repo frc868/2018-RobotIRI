@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import robot.auton.util.DriveStraight;
+import robot.auton.util.DriveStraightUntilCubeDetected;
 import robot.commands.arm.CloseArm;
 import robot.commands.arm.OpenArm;
 import robot.commands.drivetrain.AutoShiftA;
@@ -70,8 +72,9 @@ public class Robot extends TimedRobot {
 
 		SmartDashboard.putData("arm", Robot.arm);
 		SmartDashboard.putData("DriveTrain", drivetrain);
-		SmartDashboard.putData("clo seArm", new CloseArm());
+		SmartDashboard.putData("closeArm", new CloseArm());
 		SmartDashboard.putData("openArm", new OpenArm());
+	
 		
 		m_oi.setupDriver();
 		m_oi.setupOperator();
