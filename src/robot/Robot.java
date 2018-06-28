@@ -74,6 +74,9 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("DriveTrain", drivetrain);
 		SmartDashboard.putData("closeArm", new CloseArm());
 		SmartDashboard.putData("openArm", new OpenArm());
+		
+		SmartDashboard.putData("openArm", new DriveStraightUntilCubeDetected(144, .2));
+
 	
 		
 		m_oi.setupDriver();
