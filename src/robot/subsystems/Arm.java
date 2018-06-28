@@ -9,8 +9,10 @@ import robot.RobotMap;
  */
 public class Arm extends Subsystem {
 	
+	//parts of the arm
 	private Solenoid arm;
 	
+	//creating the actual arm
 	public Arm () {
 		arm = new Solenoid(RobotMap.ARM);
 	}

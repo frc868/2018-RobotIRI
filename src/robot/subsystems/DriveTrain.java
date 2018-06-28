@@ -18,6 +18,7 @@ import robot.commands.drivetrain.ArcadeDrive;
 
 public class DriveTrain extends Subsystem {
 	
+	//parts of the drivetrain
 	private HoundTalon trainRight;
 	private HoundTalon trainRight2;
 	private HoundTalon trainLeft;
@@ -26,12 +27,14 @@ public class DriveTrain extends Subsystem {
 	private PIDController pidRight;
 	private PIDController pidLeft;
 	
+	//limitations of the drivetrain motor + other constants
 	public static final double MAX_DRIVE_SPEED = 0.75;
 	public static final double MIN_DRIVE_SPEED = 0.3; // TODO: set deadband?
 	public static final double COUNTS_PER_INCH = 422;
 	
 	
-	
+	//creating the actual drivetrain and setting up pid values for the houndtalons 
+	// and setting up pid controllers for turning the bot
 	public DriveTrain(){
 		trainRight = new HoundTalon(RobotMap.DRIVETRAINRIGHT, "Drivetrain", "trainRight");
 		trainRight2 = new HoundTalon(RobotMap.DRIVETRAINRIGHT2, "Drivetrain", "trainRight2");
@@ -95,20 +98,20 @@ public class DriveTrain extends Subsystem {
 		trans.set(!trans.get());
 	}
 	
-	public int getEncoderLeft(){
-		return trainLeft.getSensorCollection().getQuadraturePosition();
+	public double getEncoderLeftDistance(){
+		return trainLeft.getSensorCollection().getQuadraturePosition() /COUNTS_PER_INCH;
 	}
 	
-	public int getEncoderRight(){
-		return trainRight.getSensorCollection().getQuadraturePosition();
+	public double getEncoderRightDistance(){
+		return trainRight.getSensorCollection().getQuadraturePosition() /COUNTS_PER_INCH;
 	}
 	
 	public double getEncoderLSpeed(){
-		return trainLeft.getSelectedSensorVelocity(0);
+		return trainLeft.getSelectedSensorVelocity(0)/COUNTS_PER_INCH;
 	}
 	
 	public double getEncoderRSpeed(){
-		return trainRight.getSelectedSensorVelocity(0);
+		return trainRight.getSelectedSensorVelocity(0)/COUNTS_PER_INCH;
 	}
 	
 	public double getRawLeftDistance() {

@@ -7,11 +7,12 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import robot.gyrohelpers.BNO055;
 
-public class Gyro extends Subsystem implements PIDSource{
+public class Gyro extends Subsystem{
+	//parts of the gyro 
 	private GyroBase gyro;
 	public static final boolean DEBUG = false;
-	private PIDSourceType pidSourceType;
 	
+	//creates actual gyro
 	public Gyro() {
 		gyro =  BNO055.getInstance(I2C.Port.kOnboard).createGyroX();
 		gyro.reset();
@@ -35,23 +36,6 @@ public class Gyro extends Subsystem implements PIDSource{
 	
     public void initDefaultCommand() {}
 
-	@Override
-	public void setPIDSourceType(PIDSourceType pidSource) {
-		// TODO Auto-generated method stub
-		pidSourceType = pidSource;
-	}
-
-	@Override
-	public PIDSourceType getPIDSourceType() {
-		// TODO Auto-generated method stub
-		return pidSourceType;
-	}
-
-	@Override
-	public double pidGet() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
 	public GyroBase getGyro() {
 		return gyro;
