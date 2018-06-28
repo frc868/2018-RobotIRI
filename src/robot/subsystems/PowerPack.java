@@ -10,6 +10,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import robot.HoundTalon;
 import robot.RobotMap;
 import robot.Utilities;
 
@@ -23,10 +24,10 @@ public class PowerPack extends Subsystem {
 	private Solenoid climberEngage;
 	private Solenoid brakeDisengage;
 
-	private WPI_TalonSRX winchPrimary;
-	private WPI_TalonSRX winchSecondary;
-	private WPI_TalonSRX winchTertiary;
-	private WPI_TalonSRX winchQuaternary;
+	private HoundTalon winchPrimary;
+	private HoundTalon winchSecondary;
+	private HoundTalon winchTertiary;
+	private HoundTalon winchQuaternary;
 	
 	public static final int PID_TOLERANCE = 5000;
 	public static final double PEAK_ELEVATOR_FWD = 1.0;
@@ -47,10 +48,10 @@ public class PowerPack extends Subsystem {
 		climberEngage = new Solenoid(RobotMap.WINCH_TRANSMISSION);
 		brakeDisengage = new Solenoid(RobotMap.WINCH_BRAKE);
 
-		winchPrimary = Utilities.getTalon(RobotMap.POWER_PACK_PRIMARY, "Power Pack", "Primary");
-		winchSecondary = Utilities.getTalon(RobotMap.POWER_PACK_SECONDARY, "Power Pack", "Secondary");
-		winchTertiary = Utilities.getTalon(RobotMap.POWER_PACK_TERTIARY, "Power Pack", "Tertiary");
-		winchQuaternary = Utilities.getTalon(RobotMap.POWER_PACK_QUATERNARY, "Power Pack", "Quaternary");
+		winchPrimary = new HoundTalon(RobotMap.POWER_PACK_PRIMARY, "Power Pack", "Primary");
+		winchSecondary = new HoundTalon(RobotMap.POWER_PACK_SECONDARY, "Power Pack", "Secondary");
+		winchTertiary = new HoundTalon(RobotMap.POWER_PACK_TERTIARY, "Power Pack", "Tertiary");
+		winchQuaternary = new HoundTalon(RobotMap.POWER_PACK_QUATERNARY, "Power Pack", "Quaternary");
 
 		winchSecondary.follow(winchPrimary);
 		winchTertiary.follow(winchPrimary);
@@ -64,8 +65,14 @@ public class PowerPack extends Subsystem {
 		winchPrimary.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, Utilities.CONFIG_TIMEOUT);
 		winchPrimary.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, Utilities.CONFIG_TIMEOUT);
 		winchPrimary.configSetParameter(ParamEnum.eClearPositionOnLimitR, 1, 0, 0, Utilities.CONFIG_TIMEOUT);
+		
+		configure(winchPrimary);
+		configure(winchSecondary);
+		configure(winchTertiary);
+		configure(winchQuaternary);
 	}
 	
+	//configures a talon to match specified limits and correct pid values
 	private void configure(WPI_TalonSRX talon) {		
 		talon.setNeutralMode(NeutralMode.Brake);
 		

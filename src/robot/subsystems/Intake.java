@@ -12,11 +12,13 @@ import robot.Utilities;
 
 public class Intake extends Subsystem{
 	
+	//parts of the intake
 	private HoundTalon intakeLeft;
 	private HoundTalon intakeRight;
 	
 	public static final boolean DEBUG = false;
 	
+	//creates actual intake object
 	public Intake() {
 		intakeLeft = new HoundTalon(RobotMap.INTAKE_LEFT, "Intake", "Left (Breakout)");
 		intakeRight = new HoundTalon(RobotMap.INTAKE_RIGHT, "Intake", "Right");
@@ -27,6 +29,7 @@ public class Intake extends Subsystem{
 		intakeRight.setInverted(true);
 	}
 	
+	//connfigures the intake HoundTalons
 	private void config(HoundTalon talon) {
 		talon.configOpenloopRamp(0.1, HoundTalon.CONFIG_TIMEOUT);
 		talon.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyClosed, HoundTalon.CONFIG_TIMEOUT);

@@ -24,7 +24,10 @@ import robot.commands.auton.TurnToAngleGyro;
 import robot.commands.intake.PullCube;
 import robot.commands.intake.SetIntakePower;
 import robot.commands.intake.TurnIntakeOff;
+import robot.commands.powerpack.GamepadClimberControl;
+import robot.commands.powerpack.GamepadElevatorControl;
 import robot.commands.powerpack.SetElevatorLimits;
+import robot.commands.powerpack.SetElevatorPosition;
 import robot.commands.powerpack.SetElevatorPower;
 import robot.commands.powerpack.SetPowerPackHold;
 import robot.commands.tilt.SetTiltPosition;
@@ -120,14 +123,15 @@ public class OI {
 //		cubeRumble.whenInactive(new RumbleOperator(1));
 		
 		Button bA = new JoystickButton(op, 1);
-		bA.whenPressed(new SetElevatorPower(-.25));
-		bA.whenReleased(new SetPowerPackHold());
 		// Set elevator to DOWN position
-//		bA.whenPressed(new SetElevatorPosition(ElevatorPosition.COLLECT)); TODO
+		bA.whenPressed(new SetElevatorPosition(SetElevatorPosition.COLLECT));
+		bA.whenReleased(new SetPowerPackHold());
 
 		Button bB = new JoystickButton(op, 2);
+
 		// Set elevator to SWITCH position
-//		bB.whenPressed(new SetElevatorPosition(ElevatorPosition.SWITCH)); TODO
+		bB.whenPressed(new SetElevatorPosition(SetElevatorPosition.SWITCH));
+		bB.whenReleased(new SetPowerPackHold());
 
 		Button bX = new JoystickButton(op, 3);
 		// Actuate collector arms
@@ -135,19 +139,17 @@ public class OI {
 		bX.whenReleased(new CloseArm());
 
 		Button bY = new JoystickButton(op, 4);
-		
-		bY.whenPressed(new SetElevatorPower(.25));
-		bY.whenReleased(new SetPowerPackHold());
 		// Set elevator to SCALE position
-//		bY.whenPressed(new SetElevatorPosition(ElevatorPosition.SCALE));
+		bY.whenPressed(new SetElevatorPosition(SetElevatorPosition.SCALE));
+		bY.whenReleased(new SetPowerPackHold());
 
 		Button LB = new JoystickButton(op, 5);
 		// OperatorClimberControl (joystick)
-//		LB.whileHeld(new GamepadClimberControl(operator, 1));
+		LB.whileHeld(new GamepadClimberControl(op, 1));
 
 		Button RB = new JoystickButton(op, 6);
 		// OperatorElevatorControl (joystick)
-//		RB.whileHeld(new GamepadElevatorControl(operator, 5));
+		RB.whileHeld(new GamepadElevatorControl(op, 5));
 
 		Button arrowUp = getPOVButton(op, 0);
 		// Set Tilt to UP

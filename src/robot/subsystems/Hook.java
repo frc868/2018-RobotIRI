@@ -10,10 +10,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Hook extends Subsystem {
 	
+	//parts of the hook
 	private final Solenoid hook = new Solenoid(RobotMap.HOOK);
 	
 	public static final boolean DEBUG = false;
 	
+	//creates actual hook
 	public Hook() {
 	}
 	
