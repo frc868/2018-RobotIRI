@@ -86,6 +86,11 @@ public class DriveTrain extends Subsystem {
 		} 
 	}
 	
+	public void setPosition(double position) {
+		trainRight.set(ControlMode.Position, position);
+		trainLeft.set(ControlMode.Position, position);
+	}
+	
 	public void toggleTrans(){
 		trans.set(!trans.get());
 	}
