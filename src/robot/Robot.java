@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import robot.auton.util.DriveStraight;
-import robot.auton.util.DriveStraightUntilCubeDetected;
 import robot.commands.arm.CloseArm;
 import robot.commands.arm.OpenArm;
+import robot.commands.auton.DriveStraight;
+import robot.commands.auton.DriveStraightUntilCubeDetected;
+import robot.commands.auton.TurnToAngleGyro;
 import robot.commands.drivetrain.AutoShiftA;
-import robot.commands.drivetrain.TurnToAngleGyro;
 import robot.subsystems.Arm;
 import robot.subsystems.DriveTrain;
 

@@ -1,4 +1,4 @@
-package robot.auton.util;
+package robot.commands.auton;
 
 import robot.Robot;
 

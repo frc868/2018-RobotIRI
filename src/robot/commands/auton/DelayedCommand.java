@@ -1,4 +1,4 @@
-package robot.auton.util;
+package robot.commands.auton;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
