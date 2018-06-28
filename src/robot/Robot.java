@@ -17,6 +17,7 @@ import robot.auton.util.DriveStraightUntilCubeDetected;
 import robot.commands.arm.CloseArm;
 import robot.commands.arm.OpenArm;
 import robot.commands.drivetrain.AutoShiftA;
+import robot.commands.drivetrain.TurnToAngleGyro;
 import robot.subsystems.Arm;
 import robot.subsystems.DriveTrain;
 
@@ -61,9 +62,10 @@ public class Robot extends TimedRobot {
 		arm = new Arm(); 
 		intake = new Intake();
 		powerpack = new PowerPack();
-		drivetrain = new DriveTrain();
+		
 
 		gyro = new Gyro();
+		drivetrain = new DriveTrain();
 
 		tilt = new Tilt();
 
@@ -78,7 +80,11 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("openArm", new DriveStraightUntilCubeDetected(144, .2));
 
 	
-		
+
+		SmartDashboard.putData("Turn Gyro Test", new TurnToAngleGyro(30, 30));
+		SmartDashboard.putData("Pid Right", Robot.drivetrain.getPIDRight());
+		SmartDashboard.putData("Pid Left", Robot.drivetrain.getPIDLeft());
+		SmartDashboard.putNumber("Gyro Angle", Robot.gyro.getAngle());
 		m_oi.setupDriver();
 		m_oi.setupOperator();
 	}

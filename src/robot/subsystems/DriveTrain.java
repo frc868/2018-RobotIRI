@@ -4,31 +4,39 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import robot.HoundTalon;
 import robot.OI;
+import robot.Robot;
 import robot.RobotMap;
 import robot.commands.drivetrain.ArcadeDrive;
 
 public class DriveTrain extends Subsystem {
 	
-	private TalonSRX trainRight;
-	private TalonSRX trainRight2;
-	private TalonSRX trainLeft;
-	private TalonSRX trainLeft2;
+	private HoundTalon trainRight;
+	private HoundTalon trainRight2;
+	private HoundTalon trainLeft;
+	private HoundTalon trainLeft2;
 	private Solenoid trans;
+	private PIDController pidRight;
+	private PIDController pidLeft;
 	
 	public static final double MAX_DRIVE_SPEED = 0.75;
 	public static final double MIN_DRIVE_SPEED = 0.3; // TODO: set deadband?
 	public static final double COUNTS_PER_INCH = 422;
 	
 	
+	
 	public DriveTrain(){
-		trainRight = new WPI_TalonSRX(RobotMap.DRIVETRAINRIGHT);
-		trainRight2 = new WPI_TalonSRX(RobotMap.DRIVETRAINRIGHT2);
-		trainLeft = new WPI_TalonSRX(RobotMap.DRIVETRAINLEFT);
-		trainLeft2 = new WPI_TalonSRX(RobotMap.DRIVETRAINLEFT2);
+		trainRight = new HoundTalon(RobotMap.DRIVETRAINRIGHT, "Drivetrain", "trainRight");
+		trainRight2 = new HoundTalon(RobotMap.DRIVETRAINRIGHT2, "Drivetrain", "trainRight2");
+		trainLeft = new HoundTalon(RobotMap.DRIVETRAINLEFT, "Drivetrain", "trainLeft");
+		trainLeft2 = new HoundTalon(RobotMap.DRIVETRAINLEFT2, "Drivetrain", "trainLeft2");
 		trans = new Solenoid(RobotMap.DRIVETRANS);
 		
 		trainRight2.follow(trainRight);
@@ -37,8 +45,8 @@ public class DriveTrain extends Subsystem {
 		trainRight.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		trainLeft.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		
-		trainRight.config_kP(0, 0, 10);
-		trainLeft.config_kP(0, 0, 10);
+		trainRight.config_kP(0, .1, 10);
+		trainLeft.config_kP(0, .1, 10);
 		
 		trainRight.config_kI(0, 0, 10);
 		trainLeft.config_kI(0, 0, 10);
@@ -48,6 +56,9 @@ public class DriveTrain extends Subsystem {
 		
 		trainLeft.setInverted(true);
 		trainLeft2.setInverted(true);
+		
+		pidRight = new PIDController(.1, 0, 0, Robot.gyro.getGyro(), trainRight);
+		pidLeft = new PIDController(.1, 0, 0, Robot.gyro.getGyro(), trainLeft);
 		
 	}
 	
@@ -125,6 +136,14 @@ public class DriveTrain extends Subsystem {
 	
 	public double getScaledLeftDistance() {
 		return getRawLeftDistance() / COUNTS_PER_INCH;
+	}
+	
+	public PIDController getPIDRight() {
+		return pidRight;
+	}
+	
+	public PIDController getPIDLeft() {
+		return pidLeft;
 	}
 	
 	//checks range of input for motors using percent output
