@@ -11,13 +11,14 @@ public class CloseArm extends Command {
 		
 	}
 
+	
 	protected void initialize() {
 		Robot.arm.close();
-		
     }
 
     protected void execute() {}
 
+    
     protected boolean isFinished() {
         return false;
     }

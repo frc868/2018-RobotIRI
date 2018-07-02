@@ -9,23 +9,27 @@ import robot.RobotMap;
  */
 public class Arm extends Subsystem {
 	
-	//parts of the arm
+	/** 
+	 * Arm pneumatics
+	 */
 	private Solenoid arm;
 	
-	//creating the actual arm
+	/**
+	 * Creates arm subsystem
+	 */
 	public Arm () {
 		arm = new Solenoid(RobotMap.ARM);
 	}
 	
 	/**
-	 * set the state to open, or true
+	 * Set the state to open, or true
 	 */
 	public void open () {
 		arm.set(true);
 	}
 	
 	/**
-	 * set the state to closed, or false
+	 * Set the state to closed, or false
 	 */
 	public void close () {
 		arm.set(false);
