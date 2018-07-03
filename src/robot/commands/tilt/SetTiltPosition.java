@@ -26,6 +26,7 @@ public class SetTiltPosition extends Command {
 		// TODO Auto-generated constructor stub
 		this.setpoint = setpoint;
 		requires(Robot.tilt);
+		System.out.println("tilt");
 	}
 
     // Called just before this Command runs the first time
@@ -34,6 +35,7 @@ public class SetTiltPosition extends Command {
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println("tilt executed");
     	double position = Robot.tilt.getPosition();
     	double power = 0;
     	double difference = setpoint - position;

@@ -8,8 +8,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
+//import org.apache.commons.csv.CSVFormat;
+//import org.apache.commons.csv.CSVPrinter;
 
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.command.Command;
@@ -50,7 +50,7 @@ public class Recorder extends Command {
 
     protected void end() {
     	notifier.stop();
-    	recorder.writeToFile(SmartDashboard.getString("Profile Recorder File Name", "Test"));
+    	//recorder.writeToFile(SmartDashboard.getString("Profile Recorder File Name", "Test"));
     }
 
     protected void interrupted() {
@@ -91,28 +91,28 @@ public class Recorder extends Command {
 			initialTime = System.nanoTime();
 		}
 		
-		public synchronized void writeToFile(String filename) {
-			try {
-				BufferedWriter writer = Files.newBufferedWriter(Paths.get(PATH));
-	            CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
-	                    .withHeader("Number", "Left Power", "Right Power", "Left Counts", "Right Counts", "Time"));
-	            
-	           
-	            for (Point point : data) {
-		            csvPrinter.printRecord(point.getNumber(), 
-		            						point.getPowerLeft(), 
-		            						point.getPowerRight(),
-		            						point.getCountsLeft(), 
-		            						point.getCountsRight(), 
-		            						point.getTime());
-	            }
-
-	            csvPrinter.flush();  
-	            
-			} catch (IOException e) {
-				System.out.println("Failed to write Recorded Profile to " + filename);
-			}
-		}
+//		public synchronized void writeToFile(String filename) {
+//			try {
+//				BufferedWriter writer = Files.newBufferedWriter(Paths.get(PATH));
+//	            CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
+//	                    .withHeader("Number", "Left Power", "Right Power", "Left Counts", "Right Counts", "Time"));
+//	            
+//	           
+//	            for (Point point : data) {
+//		            csvPrinter.printRecord(point.getNumber(), 
+//		            						point.getPowerLeft(), 
+//		            						point.getPowerRight(),
+//		            						point.getCountsLeft(), 
+//		            						point.getCountsRight(), 
+//		            						point.getTime());
+//	            }
+//
+//	            csvPrinter.flush();  
+//	            
+//			} catch (IOException e) {
+//				System.out.println("Failed to write Recorded Profile to " + filename);
+//			}
+//		}
     	
     }
 }
