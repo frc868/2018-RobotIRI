@@ -60,30 +60,21 @@ public class OI {
 //		// Give both driver & operator intake control
 //		Robot.intake.setDefaultCommand(new DualGamepadIntakeControl(driver, operator, 3, 2));
 
-		/* Button bA = new JoystickButton(driver, 1);
-		bA.whenPressed(new SetIntakePower(1));
-		bA.whenReleased(new TurnIntakeOff()); */
-		// lower hook
-//		bA.whenPressed(new SetHookPosition(false));
+		Button bA = new JoystickButton(driver, 1);
+		bA.whenPressed(new SetElevatorPosition(SetElevatorPosition.COLLECT));
+		bA.whenReleased(new SetPowerPackHold());
 		
 		Button bB = new JoystickButton(driver, 2);
-		// jiggle hook
-//		CommandGroup jiggleHook = new CommandGroup();
-//	jiggleHook.addSequential(new SetHookPosition(true));
-//		jiggleHook.addSequential(new WaitCommand(0.5));
-//		jiggleHook.addSequential(new SetHookPosition(false));
-//		bB.whenPressed(jiggleHook);
+		bB.whenPressed(new SetElevatorPosition(SetElevatorPosition.SWITCH));
+		bB.whenReleased(new SetPowerPackHold());
 
-		/* Button bY = new JoystickButton(driver, 4);
-		bY.whenPressed(new SetIntakePower(-1));
-		bY.whenReleased(new TurnIntakeOff()); */
+		Button bY = new JoystickButton(driver, 4);
+		bY.whenPressed(new SetElevatorPosition(SetElevatorPosition.SCALE));
+		bY.whenReleased(new SetPowerPackHold());
 		
 		Button bX = new JoystickButton(driver, 3);
-		bX.whenPressed(new ToggleHookPosition());
-		// ready for climb: raise hook, flip drive, and raise tilt
-//		bY.whenPressed(new SetHookPosition(true));
-//		bY.whenPressed(new SetDriveDirection(false));
-//		bY.whenPressed(new SetTiltPosition(TiltPosition.UP));
+		bX.whenPressed(new SetElevatorPosition(SetElevatorPosition.LOW_SCALE));
+		bX.whenReleased(new SetPowerPackHold());
 
 		Button RB = new JoystickButton(driver, 6);
 		// high gear while held, low when released

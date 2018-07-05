@@ -13,6 +13,8 @@ public class SetElevatorPosition extends Command {
     public static final double COLLECT = -25000;
 
 	public static final double SWITCH = 300000;
+	
+	public static final double LOW_SCALE = 570000;
 
 	public static final double SCALE = 700000;
     
