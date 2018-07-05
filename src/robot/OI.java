@@ -21,7 +21,7 @@ import robot.commands.arm.CloseArm;
 import robot.commands.arm.GrabCube;
 import robot.commands.arm.OpenArm;
 import robot.commands.auton.TurnToAngleGyro;
-import robot.commands.book.ToggleHookPosition;
+import robot.commands.hook.ToggleHookPosition;
 import robot.commands.intake.PullCube;
 import robot.commands.intake.SetIntakePower;
 import robot.commands.intake.TurnIntakeOff;

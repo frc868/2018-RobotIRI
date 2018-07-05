@@ -17,7 +17,7 @@ public class DriveStraight extends Command {
 		this.targetDistance = targetDistance * -1;
 		this.targetPower = targetPower * -1;
 		needAngle = true; 
-		System.out.println("drive");
+		System.out.println("Drive Constructed");
     }
     
     public DriveStraight(double targetDistance, double targetPower, double targetAngle) {
@@ -36,10 +36,13 @@ public class DriveStraight extends Command {
     		targetAngle = Robot.gyro.getAngle();
     	}
     	initialDistance = Robot.drivetrain.getScaledAverageDistance();
+		System.out.println("Drive Initialized");
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+		System.out.println("Drive Executing");
     	double powerLeft = targetPower;
     	double powerRight = targetPower;
     	
@@ -58,17 +61,20 @@ public class DriveStraight extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+		System.out.println("Drive Evaluating Is Finished");
     	return Math.abs(Robot.drivetrain.getScaledAverageDistance() - initialDistance) >= Math.abs(targetDistance);
     }
 
     // Called once after isFinished returns true
     protected void end() {
     	Robot.drivetrain.turnOff();
+		System.out.println("Drive Ended");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+		System.out.println("Drive Interupted");
     	end();
     }
 }

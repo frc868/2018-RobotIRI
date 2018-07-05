@@ -1,4 +1,4 @@
-package robot.commands.book;
+package robot.commands.hook;
 
 import robot.Robot;
 
@@ -7,14 +7,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ToggleHookPosition extends Command {
+public class SetHookPosition extends Command {
 
-    public ToggleHookPosition() {
+	public final boolean up;
+	
+    public SetHookPosition(boolean up) {
     	requires(Robot.hook);
+    	this.up = up;
     }
 
     protected void initialize() {
-    	Robot.hook.setPosition(!Robot.hook.isUp());
+    	Robot.hook.setPosition(up);
     }
 
     protected void execute() {}

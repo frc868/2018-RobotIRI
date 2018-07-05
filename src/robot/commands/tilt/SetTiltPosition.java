@@ -26,16 +26,18 @@ public class SetTiltPosition extends Command {
 		// TODO Auto-generated constructor stub
 		this.setpoint = setpoint;
 		requires(Robot.tilt);
-		System.out.println("tilt");
+		System.out.println("Tilt Constructed");
 	}
 
     // Called just before this Command runs the first time
     protected void initialize() {
+		System.out.println("Tilt Initialized");
+
     }
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println("tilt executed");
+		System.out.println("Tilt Executing");
     	double position = Robot.tilt.getPosition();
     	double power = 0;
     	double difference = setpoint - position;
@@ -65,6 +67,7 @@ public class SetTiltPosition extends Command {
     
 	@Override
 	protected boolean isFinished() {
+		System.out.println("Tilt Evaluating Is Finished");
 		// TODO Auto-generated constructor stub
 		return false;
 		
@@ -72,13 +75,13 @@ public class SetTiltPosition extends Command {
 	
     // Called once after isFinished returns true
     protected void end() {
-    	
+		System.out.println("Tilt Ended");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	
+		System.out.println("Tilt Interupted");
     }
     
 }
