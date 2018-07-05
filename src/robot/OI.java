@@ -185,50 +185,62 @@ public class OI {
 		select.whenReleased(new SetElevatorLimits(true));
 	}
 	
+	//get driver right X
 	public static double getDRX(){
 		return driver.getRawAxis(4);
 	}
 	
+	//get driver right Y
 	public static double getDRY(){
 		return driver.getRawAxis(5);
 	}
 	
+	//get driver left X
 	public static double getDLX(){
 		return driver.getRawAxis(0);
 	}
 	
+	//get driver left Y
 	public static double getDLY(){
 		return driver.getRawAxis(1);
 	}
 	
+	//get driver right trigger
 	public static double getDRT(){
 		return driver.getRawAxis(3);
 	}
 	
+	//get driver left trigger
 	public static double getDLT(){
 		return driver.getRawAxis(2);
 	}
 	
+	//get operator right X
 	public static double getORX(){
 		return op.getRawAxis(4);
 	}
 	
+	//get operator right Y
 	public static double getORY(){
 		return op.getRawAxis(5);
 	}
 	
+	//get operator left X
 	public static double getOLX(){
 		return op.getRawAxis(0);
 	}
 	
+	//get operator left Y
 	public static double getOLY(){
 		return op.getRawAxis(1);
 	}
 	
+	//get operator right trigger
 	public static double getORT(){
 		return op.getRawAxis(3);
 	}
 	
+	//get operator left trigger
 	public static double getOLT(){
 		return op.getRawAxis(2);
 	}

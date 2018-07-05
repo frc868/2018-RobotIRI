@@ -17,6 +17,7 @@ public class DriveStraight extends Command {
 		this.targetDistance = targetDistance * -1;
 		this.targetPower = targetPower * -1;
 		needAngle = true; 
+		System.out.println("drive");
     }
     
     public DriveStraight(double targetDistance, double targetPower, double targetAngle) {

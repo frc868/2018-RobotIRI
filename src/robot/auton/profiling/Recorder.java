@@ -22,7 +22,7 @@ import robot.Robot;
  *
  */
 public class Recorder extends Command {
-	
+
 	private RecorderRunnable recorder;
 	private Notifier notifier;
 	private double period;
@@ -52,15 +52,15 @@ public class Recorder extends Command {
 
     protected void end() {
     	notifier.stop();
-    	recorder.writeToFile(SmartDashboard.getString("Profile Recorder File Name", "Test"));
+    	//recorder.writeToFile(SmartDashboard.getString("Profile Recorder File Name", "Test"));
     }
 
     protected void interrupted() {
     	end();
     }
-    
+
     public class RecorderRunnable implements Runnable {
-    	
+
     	/**
     	 * SCHEMA:
     	 * { RIGHT_DIST, RIGHT_VEL, LEFT_DIST, LEFT_VEL }
@@ -75,15 +75,15 @@ public class Recorder extends Command {
 		public synchronized void run() {
 			double left_power = Robot.drivetrain.getRawLeftVelocity();
 			double right_power = Robot.drivetrain.getRawRightVelocity();
-			
+
 			double left_counts = Robot.drivetrain.getRawLeftDistance() - leftInitialCounts;
 			double right_counts = Robot.drivetrain.getRawRightDistance() - rightInitialCounts;
 
-			long time = System.nanoTime() - initialTime; 
-			
+			long time = System.nanoTime() - initialTime;
+
 			Point point = new Point(number, left_power, right_power, left_counts, right_counts, time);
 			data.add(point);
-			
+
 			number++;
 		}
 		
@@ -92,29 +92,29 @@ public class Recorder extends Command {
 			leftInitialCounts = Robot.drivetrain.getRawLeftDistance();
 			initialTime = System.nanoTime();
 		}
-		
+
 		public synchronized void writeToFile(String filename) {
 			/*try {
 				BufferedWriter writer = Files.newBufferedWriter(Paths.get(PATH));
 	            CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
 	                    .withHeader("Number", "Left Power", "Right Power", "Left Counts", "Right Counts", "Time"));
-	            
-	           
+
+
 	            for (Point point : data) {
-		            csvPrinter.printRecord(point.getNumber(), 
-		            						point.getPowerLeft(), 
+		            csvPrinter.printRecord(point.getNumber(),
+		            						point.getPowerLeft(),
 		            						point.getPowerRight(),
-		            						point.getCountsLeft(), 
-		            						point.getCountsRight(), 
+		            						point.getCountsLeft(),
+		            						point.getCountsRight(),
 		            						point.getTime());
 	            }
 
-	            csvPrinter.flush();  
-	            
+	            csvPrinter.flush();
+
 			} catch (IOException e) {
 				System.out.println("Failed to write Recorded Profile to " + filename);
 			}*/
 		}
-    	
+
     }
 }
