@@ -93,6 +93,7 @@ public class Robot extends TimedRobot {
 		drivetrain = new DriveTrain();
 
 		tilt = new Tilt();
+		hook = new Hook();
 
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);

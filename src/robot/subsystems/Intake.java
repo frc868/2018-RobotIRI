@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem ;
 import robot.HoundTalon;
 import robot.RobotMap;
 import robot.Utilities;
+import robot.commands.intake.SetIntakePower;
 
 public class Intake extends Subsystem{
 	
@@ -113,8 +114,7 @@ public class Intake extends Subsystem{
 
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
-		
+		setDefaultCommand(new SetIntakePower());
 	}
 
 }

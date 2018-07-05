@@ -8,8 +8,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
+*/
 
 import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.command.Command;
@@ -92,7 +94,7 @@ public class Recorder extends Command {
 		}
 		
 		public synchronized void writeToFile(String filename) {
-			try {
+			/*try {
 				BufferedWriter writer = Files.newBufferedWriter(Paths.get(PATH));
 	            CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
 	                    .withHeader("Number", "Left Power", "Right Power", "Left Counts", "Right Counts", "Time"));
@@ -111,7 +113,7 @@ public class Recorder extends Command {
 	            
 			} catch (IOException e) {
 				System.out.println("Failed to write Recorded Profile to " + filename);
-			}
+			}*/
 		}
     	
     }

@@ -1,6 +1,7 @@
 package robot.commands.intake;
 
 import edu.wpi.first.wpilibj.command.Command;
+import robot.OI;
 import robot.Robot;
 
 /**
@@ -9,8 +10,8 @@ import robot.Robot;
 public class SetIntakePower extends Command {
 
 	private double power;
-    public SetIntakePower(double power) {
-    	this.power = power;
+	
+    public SetIntakePower() {
         requires(Robot.intake);
         
     }
@@ -21,7 +22,12 @@ public class SetIntakePower extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.setPower(power);
+    	power = OI.getDLT() - OI.getDRT(); // left trigger positive (cube spit), 
+    									   // right trigger negative (cube succ)
+    	
+    	if (power != 0) {
+    		Robot.intake.setPower(power);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

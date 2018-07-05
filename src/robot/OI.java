@@ -21,6 +21,7 @@ import robot.commands.arm.CloseArm;
 import robot.commands.arm.GrabCube;
 import robot.commands.arm.OpenArm;
 import robot.commands.auton.TurnToAngleGyro;
+import robot.commands.book.ToggleHookPosition;
 import robot.commands.intake.PullCube;
 import robot.commands.intake.SetIntakePower;
 import robot.commands.intake.TurnIntakeOff;
@@ -59,9 +60,9 @@ public class OI {
 //		// Give both driver & operator intake control
 //		Robot.intake.setDefaultCommand(new DualGamepadIntakeControl(driver, operator, 3, 2));
 
-		Button bA = new JoystickButton(driver, 1);
+		/* Button bA = new JoystickButton(driver, 1);
 		bA.whenPressed(new SetIntakePower(1));
-		bA.whenReleased(new TurnIntakeOff());
+		bA.whenReleased(new TurnIntakeOff()); */
 		// lower hook
 //		bA.whenPressed(new SetHookPosition(false));
 		
@@ -73,9 +74,12 @@ public class OI {
 //		jiggleHook.addSequential(new SetHookPosition(false));
 //		bB.whenPressed(jiggleHook);
 
-		Button bY = new JoystickButton(driver, 4);
+		/* Button bY = new JoystickButton(driver, 4);
 		bY.whenPressed(new SetIntakePower(-1));
-		bY.whenReleased(new TurnIntakeOff());
+		bY.whenReleased(new TurnIntakeOff()); */
+		
+		Button bX = new JoystickButton(driver, 3);
+		bX.whenPressed(new ToggleHookPosition());
 		// ready for climb: raise hook, flip drive, and raise tilt
 //		bY.whenPressed(new SetHookPosition(true));
 //		bY.whenPressed(new SetDriveDirection(false));
@@ -156,6 +160,7 @@ public class OI {
 		arrowUp.whenPressed(new SetTiltPosition(TiltPosition.UP));
 
 		Button arrowRight = getPOVButton(op, 90);
+		
 		// Set Tilt to MIDDLE
 		arrowRight.whenPressed(new SetTiltPosition(TiltPosition.MIDDLE));
 
