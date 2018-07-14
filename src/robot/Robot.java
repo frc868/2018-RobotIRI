@@ -119,6 +119,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		System.out.println("Auton Init");
 		Scheduler.getInstance().removeAll();
 		gyro.reset();
 		new MiddleRightSwitch1();

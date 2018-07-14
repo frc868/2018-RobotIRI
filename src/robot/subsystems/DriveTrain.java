@@ -1,5 +1,7 @@
 package robot.subsystems;
 
+import com.ctre.phoenix.ErrorCode;
+import com.ctre.phoenix.motion.MotionProfileStatus;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -27,6 +29,10 @@ public class DriveTrain extends Subsystem {
 	private PIDController pidRight;
 	private PIDController pidLeft;
 	
+	private MotionProfileStatus leftStatus;
+	private MotionProfileStatus rightStatus;
+
+	
 	//limitations of the drivetrain motor + other constants
 	public static final double MAX_DRIVE_SPEED = 0.75;
 	public static final double MIN_DRIVE_SPEED = 0.3; // TODO: set deadband?
@@ -36,6 +42,9 @@ public class DriveTrain extends Subsystem {
 	//creating the actual drivetrain and setting up pid values for the houndtalons 
 	// and setting up pid controllers for turning the bot
 	public DriveTrain(){
+		leftStatus = new MotionProfileStatus();
+		rightStatus = new MotionProfileStatus();
+
 		trainRight = new HoundTalon(RobotMap.DRIVETRAINRIGHT, "Drivetrain", "trainRight");
 		trainRight2 = new HoundTalon(RobotMap.DRIVETRAINRIGHT2, "Drivetrain", "trainRight2");
 		trainLeft = new HoundTalon(RobotMap.DRIVETRAINLEFT, "Drivetrain", "trainLeft");
@@ -152,6 +161,24 @@ public class DriveTrain extends Subsystem {
 	
 	public PIDController getPIDLeft() {
 		return pidLeft;
+	}
+	
+	public HoundTalon getTalonLeft() {
+		return trainLeft;
+	}
+	
+	public HoundTalon getTalonRight() {
+		return trainRight;
+	}
+	
+	public MotionProfileStatus getLeftStatus() {
+		trainLeft.getTalon().getMotionProfileStatus(leftStatus);
+		return leftStatus;
+	}
+	
+	public MotionProfileStatus getRightStatus() {
+		trainRight.getTalon().getMotionProfileStatus(rightStatus);
+		return rightStatus;
 	}
 	
 	//checks range of input for motors using percent output

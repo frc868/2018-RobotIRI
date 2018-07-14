@@ -13,7 +13,7 @@ public class MiddleRightSwitch1 extends CommandGroup {
 
     public MiddleRightSwitch1() {
     	
-    	addParallel(new SetTiltPosition(Tilt.DOWN));
+    	//addParallel(new SetTiltPosition(Tilt.DOWN));
     	addParallel(new DriveStraight(65, .4));
     	addSequential(new PullCube());
     	addSequential(new DriveStraight(10, .4));

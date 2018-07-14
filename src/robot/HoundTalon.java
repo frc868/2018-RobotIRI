@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
 import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class HoundTalon extends WPI_TalonSRX {
@@ -16,6 +17,9 @@ public class HoundTalon extends WPI_TalonSRX {
 		config();
 	}
 
+	public TalonSRX getTalon() {
+		return (WPI_TalonSRX) this;
+	}
 	
 	public void config() {
 		// OUTPUTS
