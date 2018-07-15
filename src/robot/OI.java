@@ -21,6 +21,7 @@ import robot.commands.arm.CloseArm;
 import robot.commands.arm.GrabCube;
 import robot.commands.arm.OpenArm;
 import robot.commands.auton.TurnToAngleGyro;
+import robot.commands.drivetrain.HoundButton;
 import robot.commands.hook.ToggleHookPosition;
 import robot.commands.intake.PullCube;
 import robot.commands.intake.SetIntakePower;
@@ -59,6 +60,8 @@ public class OI {
 //		
 //		// Give both driver & operator intake control
 //		Robot.intake.setDefaultCommand(new DualGamepadIntakeControl(driver, operator, 3, 2));
+		
+		//HoundButton.create(driver, 1).pressed(new SetElevatorPosition(SetElevatorPosition.COLLECT)).released(new SetPowerPackHold());
 
 		Button bA = new JoystickButton(driver, 1);
 		bA.whenPressed(new SetElevatorPosition(SetElevatorPosition.COLLECT));
