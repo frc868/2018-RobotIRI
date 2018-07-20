@@ -85,7 +85,7 @@ public class OI {
 
 		Button RB = new JoystickButton(driver, 6);
 		RB.whenPressed(new 	Recorder(.02));
-		RB.whenPressed(new StopRecorder());
+		RB.whenReleased(new StopRecorder());
 		// high gear while held, low when released
 //		RB.whenPressed(new SetTransmission(true));
 //		RB.whenReleased(new SetTransmission(false));
