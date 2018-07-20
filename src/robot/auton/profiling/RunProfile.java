@@ -1,6 +1,9 @@
 package robot.auton.profiling;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -34,25 +37,31 @@ public class RunProfile extends Command {
 	
 
 	protected void initialize() {
-		try {
-			Reader reader = Files.newBufferedReader(Paths.get(filename));
-            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
-            
-            for (CSVRecord line: csvParser) {
+		String csvFile = Recorder.PATH;
+        String line = "";
+        String cvsSplitBy = ",";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] point_data = line.split(cvsSplitBy);
+                
+                int number = Integer.parseInt(point_data[0]);
+            	double left_power = Double.parseDouble(point_data[1]);
+            	double right_power = Double.parseDouble(point_data[2]);
+            	double left_counts = Double.parseDouble(point_data[3]);
+            	double right_counts = Double.parseDouble(point_data[4]);
+            	long time = Long.parseLong(point_data[5]);
             	
-            	int number = Integer.parseInt(line.get(0));
-            	double left_power = Double.parseDouble(line.get(1));
-            	double right_power = Double.parseDouble(line.get(2));
-            	double left_counts = Double.parseDouble(line.get(3));
-            	double right_counts = Double.parseDouble(line.get(4));
-            	long time = Long.parseLong(line.get(5));
-            	Point p = new Point(number, left_power, right_power, left_counts, right_counts, time);
-            	
-            	points.add(p);
+            	points.add(new Point(number, left_power, right_power, left_counts, right_counts, time));
+          
             }
-		} catch (Exception e) {
-			
-		}
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 		
 		startTime = System.nanoTime();
 		

@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import robot.auton.profiling.Recorder;
 import robot.commands.arm.CloseArm;
 import robot.commands.arm.GrabCube;
 import robot.commands.arm.OpenArm;
@@ -80,6 +81,7 @@ public class OI {
 		bX.whenReleased(new SetPowerPackHold());
 
 		Button RB = new JoystickButton(driver, 6);
+		RB.whenPressed(new 	Recorder(.02));
 		// high gear while held, low when released
 //		RB.whenPressed(new SetTransmission(true));
 //		RB.whenReleased(new SetTransmission(false));
