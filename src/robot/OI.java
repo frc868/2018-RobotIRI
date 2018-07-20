@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import robot.auton.profiling.Recorder;
+import robot.auton.profiling.StopRecorder;
 import robot.commands.arm.CloseArm;
 import robot.commands.arm.GrabCube;
 import robot.commands.arm.OpenArm;
@@ -45,6 +46,8 @@ public class OI {
 	public static final XboxController driver = new XboxController(0);
 	public static final XboxController op = new XboxController(1);
 	public static boolean driveDirection = true;
+	
+	private Recorder recorder;
 	
 	// TODO tune this, 5% to 10%
 	public static final double CONTROLLER_DEADBAND = 0.02;
@@ -82,6 +85,7 @@ public class OI {
 
 		Button RB = new JoystickButton(driver, 6);
 		RB.whenPressed(new 	Recorder(.02));
+		RB.whenPressed(new StopRecorder());
 		// high gear while held, low when released
 //		RB.whenPressed(new SetTransmission(true));
 //		RB.whenReleased(new SetTransmission(false));

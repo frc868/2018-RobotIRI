@@ -29,6 +29,8 @@ public class Recorder extends Command {
 	private RecorderRunnable recorder;
 	private Notifier notifier;
 	private double period;
+	
+	protected static Recorder instance;
 
 	protected static final String PATH = "/home/lvuser/";
 
@@ -37,6 +39,7 @@ public class Recorder extends Command {
     	notifier = new Notifier(recorder);
     	this.period = period;
     	SmartDashboard.putString("Profile Recorder File Name", "Test");
+    	instance = this;
     }
 
     protected void initialize() {
@@ -148,4 +151,5 @@ public class Recorder extends Command {
 		}
 
     }
+    
 }
