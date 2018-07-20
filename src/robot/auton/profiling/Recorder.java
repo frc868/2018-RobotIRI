@@ -97,26 +97,54 @@ public class Recorder extends Command {
 		}
 
 		public synchronized void writeToFile(String filename) {
+	        FileWriter fw = null;
 			try {
-				BufferedWriter writer = Files.newBufferedWriter(Paths.get(PATH));
-	            CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT
-	                    .withHeader("Number", "Left Power", "Right Power", "Left Counts", "Right Counts", "Time"));
+				fw = new FileWriter(PATH);	
+				
+				fw.append("number");
+				fw.append(",");
+				fw.append("left-power");
+				fw.append(",");
+				fw.append("right-power");
+				fw.append(",");
+				fw.append("left-counts");
+				fw.append(",");
+				fw.append("right-counts");
+				fw.append(",");
+				fw.append("time");
+				fw.append("\n");
 
+				
+				for (Point point : data) {
+					fw.append(Integer.toString(point.getNumber()));
+					fw.append(",");
+					fw.append(Double.toString(point.getPowerLeft()));
+					fw.append(",");
+					fw.append(Double.toString(point.getPowerRight()));
+					fw.append(",");
+					fw.append(Double.toString(point.getCountsLeft()));
+					fw.append(",");
+					fw.append(Double.toString(point.getCountsRight()));
+					fw.append(",");
+					fw.append(Long.toString(point.getTime()));
+					fw.append("\n");
+				}
 
-	            for (Point point : data) {
-		            csvPrinter.printRecord(point.getNumber(),
-		            						point.getPowerLeft(),
-		            						point.getPowerRight(),
-		            						point.getCountsLeft(),
-		            						point.getCountsRight(),
-		            						point.getTime());
-	            }
-
-	            csvPrinter.flush();
+	            System.out.println("CSV file was created successfully !!!");
 
 			} catch (IOException e) {
-				System.out.println("Failed to write Recorded Profile to " + filename);
+	            System.out.println("Error while writing CSV file !!!");
+			} finally {
+				try {
+					fw.flush();
+					fw.close();
+					
+		            System.out.println("Closed writer !!!");
+				} catch (IOException e) {
+		            System.out.println("Error while flushing/closing CSV file !!!");
+				}
 			}
+			
 		}
 
     }
